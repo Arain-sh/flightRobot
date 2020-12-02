@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.files.FilesFragment">
+
+    <GridLayout
+        android:id="@+id/files_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_shadow_start_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="36dp"
+            android:gravity="center"
+            android:text="文件名称"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/files_name"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:hint="输入文件名"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="文件类型"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/files_spinner"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:entries="@array/files_type"
+            android:prompt="@array/files_type" />
+
+        <Button></Button>
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        app:layout_constraintBottom_toTopOf="parent"
+        android:layout_marginTop="50dp">
+    </GridLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">flightRobot</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">ALIAS</string>
+    <string name="nav_header_subtitle">智能飞行管理系统</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">退出登录</string>
+
+    <string name="menu_home">飞行任务库</string>
+    <string name="menu_gallery">飞行任务执行监控</string>
+    <string name="menu_slideshow">飞行信息管理</string>
+    <string name="menu_sys_monitor">系统监控</string>
+    <string name="menu_files">电子资料包</string>
+    <string name="menu_settings">系统设置</string>
+
+    <string name="inf_jd">经度</string>
+    <string name="inf_wd">纬度</string>
+    <string name="inf_gd">高度</string>
+    <string name="inf_yxgd">预选高度</string>
+    <string name="inf_sd">速度</string>
+    <string name="inf_yxsd">预选速度</string>
+    <string name="inf_czsd">垂直速度</string>
+    <string name="inf_yxczsd">预选垂直速度</string>
+    <string name="inf_hx">航向</string>
+    <string name="inf_yxhx">预选航向</string>
+    <string name="inf_wxdgd">无线电高度</string>
+    <string name="inf_mhs">马赫数</string>
+    <string name="inf_plj">偏流角</string>
+    <string name="inf_gj">攻角</string>
+    <string name="inf_chj">侧滑角</string>
+    <string name="inf_fdjzs">发动机转速</string>
+    <string name="inf_fdjpqwd">发动机排气温度</string>
+    <string name="inf_fdjymjd">发动机油门角度</string>
+    <string name="inf_fdjnj">发动机扭矩</string>
+    <string name="inf_bjhgj">本机横滚角</string>
+    <string name="inf_bjfyj">本机俯仰角</string>
+    <string name="inf_bjzyhgj">本机指引横滚角</string>
+    <string name="inf_bjzyfyj">本机指引俯仰角</string>
+</resources>
