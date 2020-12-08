@@ -51,7 +51,8 @@
                 android:layout_below="@+id/huanying"
                 android:layout_marginTop="30dp"
                 android:layout_centerHorizontal="true"
-                android:inputType="textPersonName">
+                android:inputType="textPersonName"
+                android:hint="请输入用户名">
             </EditText>
             <ImageView
                 android:id="@+id/pwdlogo"
@@ -68,7 +69,8 @@
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/userinput"
-                android:inputType="textPassword">
+                android:inputType="textPassword"
+                android:hint="请输入密码">
             </EditText>
             <Button
                 android:id="@+id/loginbutton"

@@ -49,7 +49,9 @@
             android:entries="@array/files_type"
             android:prompt="@array/files_type" />
 
-        <Button></Button>
+        <Button
+            android:id="@+id/files_search"
+            android:text="search"></Button>
     </GridLayout>
 
     <GridLayout

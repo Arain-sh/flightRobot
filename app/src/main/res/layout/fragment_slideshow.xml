@@ -265,18 +265,18 @@
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="45dp"
@@ -507,17 +507,17 @@
             <Button
                 android:text="修改">
             </Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
+            <Button android:text="修改"></Button>
         </GridLayout>
     </ScrollView>
 
