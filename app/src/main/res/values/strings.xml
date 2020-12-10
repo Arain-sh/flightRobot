@@ -7,6 +7,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="action_logout">退出登录</string>
+    <string name="agree">确认修改</string>
+    <string name="disagree">取消</string>
+    <string name="fix_title">通知</string>
+    <string name="fix_mes">是否修改该参数</string>
+    <string name="query">搜索...</string>
+    <string name="table_pagination_details">Page %d, showing items %d to %d.</string>
 
     <string name="menu_home">飞行任务库</string>
     <string name="menu_gallery">飞行任务执行监控</string>
@@ -38,4 +44,34 @@
     <string name="inf_bjfyj">本机俯仰角</string>
     <string name="inf_bjzyhgj">本机指引横滚角</string>
     <string name="inf_bjzyfyj">本机指引俯仰角</string>
+
+
+
+
+    <!-- menu -->
+    <string name="sort_ascending">Sort Ascending</string>
+    <string name="sort_descending">Sort Descending</string>
+    <string name="hide_row">Hide Row 3</string>
+    <string name="show_row">Show Row 3</string>
+    <string name="scroll_to_row_position">Scroll to Row 100</string>
+    <string name="scroll_to_column_position">Scroll to column 50</string>
+    <string name="show_hide_column">Show/Hide column 5</string>
+
+    <!-- tableview controls -->
+    <string-array name="items_per_page">
+        <item>10</item>
+        <item>20</item>
+        <item>25</item>
+        <item>50</item>
+        <item>All</item>
+    </string-array>
+    <string-array name="cam">
+        <item>Cam_01</item>
+        <item>Cam_02</item>
+        <item>Cam_03</item>
+        <item>Cam_04</item>
+        <item>Cam_05</item>
+        <item>Cam_06</item>
+    </string-array>
+
 </resources>

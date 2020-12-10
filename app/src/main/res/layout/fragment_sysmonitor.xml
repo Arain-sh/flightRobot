@@ -5,16 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.settings.SettingsFragment">
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="75dp"
-        android:gravity="center"
-        android:text="数据库"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <ImageView
+            android:id="@+id/monitor"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/mainimg"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"></ImageView>
+
+        <Button
+            android:id="@+id/monitorButton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="查看监控及录像"
+            android:layout_below="@+id/monitor"
+            android:layout_centerInParent="true"></Button>
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.tasks.TasksFragment">
+
+    <LinearLayout
+        android:id="@+id/table_controls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/search_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <EditText
+                android:id="@+id/query_string"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="25"
+                android:hint="@string/query"
+                android:inputType="textNoSuggestions" />
+            <ImageButton
+                android:id="@+id/previous_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/ic_previous" />
+
+            <EditText
+                android:id="@+id/page_number_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="15"
+                android:inputType="number" />
+
+            <ImageButton
+                android:id="@+id/next_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/ic_next" />
+
+            <TextView
+                android:id="@+id/table_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="30" />
+
+            <Spinner
+                android:id="@+id/items_per_page_spinner"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="25"
+                android:background="@color/colorCyanButton"
+                android:textAlignment="center"
+                android:entries="@array/items_per_page"
+                android:textColor="#FFFFFF"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ph.ingenuity.tableview.TableView
+        android:id="@+id/task_table_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:table_column_header_height="@dimen/default_column_header_height"
+        app:table_selected_color="@color/colorPrimary"
+        app:table_separator_color="@color/colorAccent"
+        app:table_shadow_color="@color/table_view_default_shadow_background_color"
+        app:table_show_horizontal_separator="true"
+        app:table_show_vertical_separator="true"
+        app:table_unselected_color="@color/table_view_default_unselected_background_color"
+        tools:layout_editor_absoluteX="16dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

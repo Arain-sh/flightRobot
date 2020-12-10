@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.SettingsFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="30dp">
+
+        <GridLayout
+            android:id="@+id/jxbzt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            android:elevation="5dp"
+            android:background="#E8EAF6">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_columnSpan="2"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:text="机械臂状态"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="虚拟飞行员核心机上电"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="正常"></Button>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="虚拟飞行员机械臂上电"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="正常"></Button>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="虚拟飞行员视觉系统上电"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="正常"></Button>
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/sxtzt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:layout_marginLeft="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_toRightOf="@+id/jxbzt"
+            android:elevation="5dp"
+            android:background="#E8EAF6"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_columnSpan="2"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:text="摄像头状态"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cam01"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="一号摄像头"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="正常"></Button>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="二号摄像头"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="正常"></Button>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="三号摄像头"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="正常"></Button>
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/gkjzt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/jxbzt"
+            android:elevation="5dp"
+            android:background="#E8EAF6">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_columnSpan="2"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:text="工控机状态"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cpu"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="CPU温度"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="45摄氏度"></Button>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="显卡温度"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="45摄氏度"></Button>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="知识图谱"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button android:text="已运行"></Button>
+        </GridLayout>
+
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

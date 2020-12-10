@@ -32,14 +32,14 @@ class FilesFragment : Fragment() {
             //textView.text = it
         })
         val button: Button = root.findViewById(R.id.files_search)
-        button.setOnClickListener {
+        /*button.setOnClickListener {
             val it = Intent(root.context, FileViewActivity::class.java)
             //val it = Intent()
             //it.setAction("android.intent.action.FileView")
             var url: String = "http://www.baidu.com"
             it.putExtra("url", url)
             startActivity(it)
-        }
+        }*/
         return root
     }
 }

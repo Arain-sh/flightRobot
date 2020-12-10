@@ -82,16 +82,5 @@
         </GridLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/confirm_button"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="748dp"
-        android:layout_marginLeft="748dp"
-        android:layout_marginTop="392dp"
-        android:text="确认选择"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></Button>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

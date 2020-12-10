@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorBar">#283593</color>
+    <color name="colorCyanButton">#018786</color>
 </resources>

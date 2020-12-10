@@ -47,7 +47,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //table
+    implementation 'ph.ingenuity.tableview:tableview:0.1.0-alpha'
 
+    //alert dialog
+    implementation 'com.tapadoo.android:alerter:6.2.1'
+    //bottomsheets
+    implementation 'com.afollestad.material-dialogs:bottomsheets:3.2.1'
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
     //login ui
     //implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
 }

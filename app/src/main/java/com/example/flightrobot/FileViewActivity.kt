@@ -17,7 +17,7 @@ class FileViewActivity : AppCompatActivity() {
 
     companion object {
         fun startForResult(activity: Activity, requestCode: Int = MainActivity.REQUEST_LOGIN) {
-            val intent = Intent(activity, LoginActivity::class.java)
+            val intent = Intent(activity, FileViewActivity::class.java)
             activity.startActivityForResult(intent, requestCode)
         }
     }
@@ -25,7 +25,7 @@ class FileViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_file_view)
-        Objects.requireNonNull(getSupportActionBar())?.setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar())?.setDisplayHomeAsUpEnabled(true)
 
         webView = WebView(this)
         webView!!.setWebViewClient(object : WebViewClient() {

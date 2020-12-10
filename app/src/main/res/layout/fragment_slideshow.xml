@@ -265,18 +265,33 @@
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
+            <Button
+                android:id="@+id/jd_button"
+                android:text="修改"></Button>
+            <Button
+                android:text="修改"
+                android:id="@+id/wd_button"></Button>
+            <Button
+                android:text="修改"
+                android:id="@+id/gd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/yxgd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/sd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/yxsd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/czsd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/yxczsd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/hx_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/yxhx_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/wxdgd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/mhs_button"></Button>
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="45dp"
@@ -505,19 +520,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
             <Button
-                android:text="修改">
+                android:text="修改"
+                android:id="@+id/plj_button">
             </Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
-            <Button android:text="修改"></Button>
+            <Button android:text="修改"
+                android:id="@+id/gj_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/chj_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/fdjzs_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/fdjpqwd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/fdjymjd_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/fdjnj_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/bjhgj_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/bjfyj_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/bjzyhgj_button"></Button>
+            <Button android:text="修改"
+                android:id="@+id/bjzyfyj_button"></Button>
         </GridLayout>
     </ScrollView>
 

@@ -5,4 +5,257 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.gallery.GalleryFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <GridLayout
+            android:id="@+id/task1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="#EFEBE9"
+            android:elevation="10dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:text="任务1名称"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/des_task1"
+                android:text="查看详情"
+                android:layout_gravity="center"></Button>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="任务描述："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="description..."
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="发布时间："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="2020年12月05日17:47:32"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="执行结果："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="已完成"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/task2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_toRightOf="@+id/task1"
+            android:background="#EFEBE9"
+            android:elevation="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:text="任务2名称"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/des_task2"
+                android:text="查看详情"
+                android:layout_gravity="center"></Button>
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="任务描述："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="description..."
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="发布时间："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="2020年12月08日17:47:32"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="执行结果："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="正在执行..."
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/task3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_below="@+id/task1"
+            android:background="#EFEBE9"
+            android:elevation="10dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:text="任务3名称"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/des_task3"
+                android:layout_gravity="center"
+                android:text="查看详情"></Button>
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="任务描述："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="description..."
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="发布时间："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="2020年12月14日17:47:32"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="执行结果："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="待执行"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </GridLayout>
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

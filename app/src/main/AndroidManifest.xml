@@ -40,6 +40,61 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".FlightDBActivity"
+            android:label="飞行任务数据库"
+            android:theme="@style/AppTheme.BackAction">
+            <intent-filter>
+                <action android:name="android.intent.action.DATABASE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TaskActivity"
+            android:label="飞行任务"
+            android:theme="@style/AppTheme.BackAction">
+            <intent-filter>
+                <action android:name="android.intent.action.DATABASE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".DeviceActivity"
+            android:label="设备工作状态"
+            android:theme="@style/AppTheme.BackAction">
+            <intent-filter>
+                <action android:name="android.intent.action.DATABASE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".CamActivity"
+            android:label="监控"
+            android:theme="@style/AppTheme.BackAction">
+            <intent-filter>
+                <action android:name="android.intent.action.DATABASE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".VideoActivity"
+            android:label="录像"
+            android:theme="@style/AppTheme.BackAction">
+            <intent-filter>
+                <action android:name="android.intent.action.DATABASE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

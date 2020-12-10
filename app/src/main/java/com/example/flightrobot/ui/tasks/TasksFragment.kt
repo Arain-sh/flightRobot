@@ -1,4 +1,4 @@
-package com.example.flightrobot.ui.sysmonitor
+package com.example.flightrobot.ui.tasks
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.flightrobot.R
 
-class SysmonitorFragment : Fragment() {
+class TasksFragment : Fragment() {
 
-    private lateinit var sysmonitorViewModel: SysmonitorViewModel
+    private lateinit var tasksViewModel: TasksViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        sysmonitorViewModel =
-                ViewModelProviders.of(this).get(SysmonitorViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_sysmonitor, container, false)
+        tasksViewModel =
+                ViewModelProviders.of(this).get(TasksViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_tasks, container, false)
         //val textView: TextView = root.findViewById(R.id.text_slideshow)
-        sysmonitorViewModel.text.observe(viewLifecycleOwner, Observer {
+        tasksViewModel.text.observe(viewLifecycleOwner, Observer {
             //textView.text = it
         })
         return root
