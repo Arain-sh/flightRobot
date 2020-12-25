@@ -13,6 +13,7 @@
     <string name="fix_mes">是否修改该参数</string>
     <string name="query">搜索...</string>
     <string name="table_pagination_details">Page %d, showing items %d to %d.</string>
+    <string name="default_url">http://192.168.10.10</string>
 
     <string name="menu_home">飞行任务库</string>
     <string name="menu_gallery">飞行任务执行监控</string>
@@ -44,8 +45,6 @@
     <string name="inf_bjfyj">本机俯仰角</string>
     <string name="inf_bjzyhgj">本机指引横滚角</string>
     <string name="inf_bjzyfyj">本机指引俯仰角</string>
-
-
 
 
     <!-- menu -->

@@ -32,9 +32,7 @@ import ph.ingenuity.tableview.feature.sort.SortState
 import ph.ingenuity.tableviewdemo.viewholders.RandomDataColumnHeaderViewHolder
 
 /**
- * Created by jeremypacabis on March 05, 2018.
- * @author Jeremy Patrick Pacabis <jeremy@ingenuity.ph>
- * ph.ingenuity.tableview.menu <android-tableview-kotlin>
+ * Created by Arain on March 05, 2020.
  */
 class ColumnHeaderLongPressPopup(
         viewHolder: RandomDataColumnHeaderViewHolder,

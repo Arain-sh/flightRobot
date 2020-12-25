@@ -6,25 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.tasks.TasksFragment">
 
-    <GridLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp">
-
-        <Button
-            android:id="@+id/task001"
-            android:text="爬升任务"></Button>
-        <Button
-            android:id="@+id/task002"
-            android:text="巡航任务"></Button>
-        <Button
-            android:id="@+id/task003"
-            android:text="着陆任务"></Button>
-    </GridLayout>
-
+        android:layout_marginTop="60dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

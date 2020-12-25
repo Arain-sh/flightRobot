@@ -9,6 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import rxhttp.RxHttp
+import rxhttp.toClass
+import rxhttp.tryAwait
+
 
 class LoginActivity : AppCompatActivity() {
     private var username: EditText? = null
@@ -33,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(getApplicationContext(), "登录中...", Toast.LENGTH_SHORT).show();
             finish()
         }
+
     }
 
     override fun onBackPressed() {

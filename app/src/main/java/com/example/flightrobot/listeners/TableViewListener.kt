@@ -34,9 +34,7 @@ import ph.ingenuity.tableviewdemo.viewholders.RandomDataColumnHeaderViewHolder
 import ph.ingenuity.tableviewdemo.viewholders.RandomDataRowHeaderViewHolder
 
 /**
- * Created by jeremypacabis on March 05, 2018.
- * @author Jeremy Patrick Pacabis <jeremy@ingenuity.ph>
- * ph.ingenuity.tableview.listeners <android-tableview-kotlin>
+ * Created by Arain on March 05, 2020.
  */
 class TableViewListener(private val tableView: TableView) : ITableViewListener {
 

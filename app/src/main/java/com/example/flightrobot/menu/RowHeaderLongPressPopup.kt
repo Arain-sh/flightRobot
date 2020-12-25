@@ -31,10 +31,9 @@ import ph.ingenuity.tableview.ITableView
 import ph.ingenuity.tableviewdemo.viewholders.RandomDataRowHeaderViewHolder
 
 /**
- * Created by jeremypacabis on March 06, 2018.
- * @author Jeremy Patrick Pacabis <jeremy@ingenuity.ph>
- * ph.ingenuity.tableview.menu <android-tableview-kotlin>
+ * Created by Arain on March 05, 2020.
  */
+
 class RowHeaderLongPressPopup(
         viewHolder: RandomDataRowHeaderViewHolder,
         private val tableView: ITableView

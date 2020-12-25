@@ -27,9 +27,7 @@ import ph.ingenuity.tableviewdemo.models.RandomDataCell
 import java.util.*
 
 /**
- * Created by jeremypacabis on March 02, 2018.
- * @author Jeremy Patrick Pacabis <jeremy@ingenuity.ph>
- * ph.ingenuity.tableview.data <android-tableview-kotlin>
+ * Created by Arain on March 02, 2020.
  */
 class RandomDataFactory(
         numColumns: Int,

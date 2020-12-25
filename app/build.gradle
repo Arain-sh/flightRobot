@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+//Must be used when using kapt
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 30
@@ -12,6 +15,17 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        //Pass in RxJava version, can pass in RxJava2, RxJava3
+                        rxhttp_rxjava: 'rxjava3',
+                        rxhttp_package: 'rxhttp'   //Specifies the RxHttp class package
+                ]
+            }
+        }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -55,6 +69,28 @@ dependencies {
     //bottomsheets
     implementation 'com.afollestad.material-dialogs:bottomsheets:3.2.1'
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
-    //login ui
-    //implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
+
+    //rxhttp
+    implementation 'com.ljx.rxhttp:rxhttp:2.5.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    kapt 'com.ljx.rxhttp:rxhttp-compiler:2.5.2' //Use the annotationProcessor instead of kapt, if you use Java
+
+    implementation 'com.ljx.rxlife:rxlife-coroutine:2.0.0'
+    //rxjava3
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.6'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'com.ljx.rxlife3:rxlife-rxjava:3.0.0' //RxJava3, Automatic close request
+
+    implementation 'com.ljx.rxhttp:converter-fastjson:2.5.2'
+    implementation 'com.ljx.rxhttp:converter-jackson:2.5.2'
+    implementation 'com.ljx.rxhttp:converter-moshi:2.5.2'
+    implementation 'com.ljx.rxhttp:converter-protobuf:2.5.2'
+    implementation 'com.ljx.rxhttp:converter-simplexml:2.5.2'
+
+    //json parser
+    implementation 'com.beust:klaxon:5.0.1'
+
+    implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
+
+    implementation 'com.afollestad.material-dialogs:input:3.3.0'
 }

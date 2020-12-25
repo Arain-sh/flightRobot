@@ -197,7 +197,7 @@
             <EditText
                 android:id="@+id/inf_sd"
                 android:layout_width="160dp"
-                android:layout_height="45dp"
+                android:layout_height="36dp"
                 android:hint="120"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
@@ -432,7 +432,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/inf_phj"
+                android:id="@+id/inf_chj"
                 android:layout_width="160dp"
                 android:layout_height="45dp"
                 android:hint="120"

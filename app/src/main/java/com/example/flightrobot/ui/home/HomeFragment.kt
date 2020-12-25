@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
             //textView.text = it
         })
 
+
         val imgButton737: ImageView = root.findViewById(R.id.db737)
         val imgButton787: ImageView = root.findViewById(R.id.db787)
         val imgButton919: ImageView = root.findViewById(R.id.db919)

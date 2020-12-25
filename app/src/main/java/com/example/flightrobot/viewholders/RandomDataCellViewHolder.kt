@@ -29,9 +29,7 @@ import com.example.flightrobot.R
 import ph.ingenuity.tableview.adapter.recyclerview.holder.AbstractViewHolder
 
 /**
- * Created by jeremypacabis on March 02, 2018.
- * @author Jeremy Patrick Pacabis <jeremy@ingenuity.ph>
- * ph.ingenuity.tableview.viewholders <android-tableview-kotlin>
+ * Created by Arain on March 05, 2020.
  */
 class RandomDataCellViewHolder(itemView: View) : AbstractViewHolder(itemView) {
     val cellTextView: TextView

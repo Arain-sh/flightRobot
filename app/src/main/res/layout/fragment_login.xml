@@ -8,23 +8,26 @@
 
     <RelativeLayout
         android:id="@+id/loginLogo"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="27dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="5dp"
             android:src="@mipmap/ic_login"></ImageView>
 
         <RelativeLayout
             android:layout_width="300dp"
             android:layout_height="250dp"
-            android:layout_marginLeft="520dp"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="520dp">
+
             <TextView
                 android:id="@+id/huanying"
                 android:layout_width="wrap_content"
@@ -32,53 +35,53 @@
                 android:layout_centerHorizontal="true"
                 android:text="您好，请登录."
                 android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="20sp">
-            </TextView>
+                android:textSize="20sp"
+                android:textStyle="bold"></TextView>
+
             <ImageView
                 android:id="@+id/userlogo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_below="@+id/huanying"
                 android:layout_marginTop="50dp"
-                android:src="@mipmap/login_user"
                 android:layout_toLeftOf="@+id/userinput"
-                android:layout_below="@+id/huanying"></ImageView>
+                android:src="@mipmap/login_user"></ImageView>
 
             <EditText
                 android:id="@+id/userinput"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/huanying"
-                android:layout_marginTop="30dp"
                 android:layout_centerHorizontal="true"
-                android:inputType="textPersonName"
-                android:hint="请输入用户名">
-            </EditText>
+                android:layout_marginTop="30dp"
+                android:hint="请输入用户名"
+                android:inputType="textPersonName"></EditText>
+
             <ImageView
                 android:id="@+id/pwdlogo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_below="@+id/userlogo"
                 android:layout_marginTop="20dp"
-                android:src="@mipmap/login_pwd"
                 android:layout_toLeftOf="@+id/pwdinput"
-                android:layout_below="@+id/userlogo"></ImageView>
+                android:src="@mipmap/login_pwd"></ImageView>
 
             <EditText
                 android:id="@+id/pwdinput"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/userinput"
-                android:inputType="textPassword"
-                android:hint="请输入密码">
-            </EditText>
+                android:layout_centerHorizontal="true"
+                android:hint="请输入密码"
+                android:inputType="textPassword"></EditText>
+
             <Button
                 android:id="@+id/loginbutton"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:layout_below="@id/pwdinput"
-                android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
                 android:background="#004684"
                 android:text="登录"
                 android:textColor="#FFFFFF"></Button>
