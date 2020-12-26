@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.flightrobot"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -93,4 +93,10 @@ dependencies {
     implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
 
     implementation 'com.afollestad.material-dialogs:input:3.3.0'
+    //switch button
+    implementation 'com.bitvale:switcher:1.1.0'
+
+    //pdf
+    implementation 'com.github.afreakyelf:Pdf-Viewer:1.0.3'
+
 }

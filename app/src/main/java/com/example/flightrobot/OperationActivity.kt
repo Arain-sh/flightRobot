@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.flightrobot.models.operationResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_operation.*
 import kotlinx.android.synthetic.main.fragment_taskinfo.*
 import kotlinx.android.synthetic.main.fragment_taskinfo.actionRecycler
-import operationResponse
 import rxhttp.RxHttp
 import java.util.*
 

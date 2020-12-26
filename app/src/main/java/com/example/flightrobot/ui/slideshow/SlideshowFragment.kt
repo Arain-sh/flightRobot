@@ -1,6 +1,5 @@
 package com.example.flightrobot.ui.slideshow
 
-import airinfoResponse
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +17,7 @@ import com.afollestad.materialdialogs.bottomsheets.gridItems
 import com.example.flightrobot.ActionRecyclerAdapter
 import com.example.flightrobot.OperationRecyclerAdapter
 import com.example.flightrobot.R
+import com.example.flightrobot.models.airinfoResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_operation.*
 import kotlinx.android.synthetic.main.fragment_taskinfo.*

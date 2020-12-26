@@ -54,13 +54,12 @@
             android:text="search"></Button>
     </GridLayout>
 
-    <GridLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fileRecycler"
+        app:layout_constraintTop_toBottomOf="@id/files_title"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="4"
-        app:layout_constraintBottom_toTopOf="parent"
-        android:layout_marginTop="50dp">
-    </GridLayout>
+        android:layout_height="wrap_content" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

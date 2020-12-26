@@ -11,9 +11,17 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.flightrobot.FileViewActivity
-import com.example.flightrobot.LoginActivity
-import com.example.flightrobot.R
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.flightrobot.*
+import com.example.flightrobot.models.airinfoResponse
+import com.google.gson.Gson
+import com.rajat.pdfviewer.PdfViewerActivity
+import fileResponse
+import kotlinx.android.synthetic.main.fragment_files.*
+import kotlinx.android.synthetic.main.fragment_operation.*
+import kotlinx.android.synthetic.main.fragment_taskinfo.*
+import rxhttp.RxHttp
 
 class FilesFragment : Fragment() {
 
@@ -31,15 +39,47 @@ class FilesFragment : Fragment() {
         filesViewModel.text.observe(viewLifecycleOwner, Observer {
             //textView.text = it
         })
+
+        // kotlin
+        RxHttp.get(this.getString(R.string.default_url) + "/api/v1/files")
+            .asString()
+            .subscribe({ s ->
+                try {
+                    var s: fileResponse = Gson().fromJson(s, fileResponse::class.java)
+                    var files = s.data
+                    files?.let{
+                        this.activity?.runOnUiThread() {
+                            //这里面进行UI的更新操作
+                            //使用Recycler
+                            val layoutManager = GridLayoutManager(this.context, 3)
+                            fileRecycler.layoutManager = layoutManager
+                            val adapter = FileRecyclerAdapter(files)
+                            fileRecycler.adapter = adapter
+                        }
+                    }
+
+                } catch (e: Exception) {
+                    println(e)
+                }
+            }, { throwable ->
+                println(throwable)
+                println("Sys Log: cannot get data")
+            })
+
         val button: Button = root.findViewById(R.id.files_search)
-        /*button.setOnClickListener {
-            val it = Intent(root.context, FileViewActivity::class.java)
-            //val it = Intent()
-            //it.setAction("android.intent.action.FileView")
-            var url: String = "http://www.baidu.com"
-            it.putExtra("url", url)
-            startActivity(it)
-        }*/
+
+        button.setOnClickListener {
+            startActivity(
+                PdfViewerActivity.buildIntent(
+                    this.context,
+                    "https://arxiv.org/pdf/2012.13257v1.pdf",                                // PDF URL in String format
+                    false,
+                    "Pdf title/name ",                        // PDF Name/Title in String format
+                    "",                  // If nothing specific, Put "" it will save to Downloads
+                    enableDownload = false                    // This param is true by defualt.
+                )
+            )
+        }
         return root
     }
 }

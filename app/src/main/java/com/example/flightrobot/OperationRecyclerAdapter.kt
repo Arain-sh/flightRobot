@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.input
+import com.example.flightrobot.models.operationResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_operation.*
 import rxhttp.RxHttp

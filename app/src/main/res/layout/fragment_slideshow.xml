@@ -197,7 +197,7 @@
             <EditText
                 android:id="@+id/inf_sd"
                 android:layout_width="160dp"
-                android:layout_height="36dp"
+                android:layout_height="45dp"
                 android:hint="120"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
