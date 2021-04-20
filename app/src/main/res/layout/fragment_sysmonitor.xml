@@ -11,23 +11,322 @@
         android:id="@+id/RelativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-        <ImageView
-            android:id="@+id/monitor"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/mainimg"
-            android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"></ImageView>
 
-        <Button
-            android:id="@+id/monitorButton"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="查看监控及录像"
-            android:layout_below="@+id/monitor"
-            android:layout_centerInParent="true"></Button>
+
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/jxbzt"
+            android:layout_width="wrap_content"
+            android:layout_height="225dp"
+            android:background="#000000"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            tools:layout_editor_absoluteX="480dp"
+            tools:layout_editor_absoluteY="300dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp">
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:columnCount="2"
+                android:elevation="5dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_columnSpan="2"
+                    android:layout_marginLeft="50dp"
+                    android:gravity="center"
+                    android:text="机械臂状态"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="虚拟飞行员核心机上电"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/hxj_status"
+                    android:text="正常"
+                    android:layout_marginRight="10dp"></Button>
+
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="虚拟飞行员机械臂上电"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button android:id="@+id/jxb_status"
+                    android:text="正常"
+                    android:layout_marginRight="10dp"></Button>
+
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="虚拟飞行员视觉系统上电"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button android:id="@+id/sjxt_status"
+                    android:text="正常"
+                    android:layout_marginRight="10dp"></Button>
+            </GridLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sxtzt"
+            android:layout_width="wrap_content"
+            android:layout_height="225dp"
+            android:background="#000000"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/jxbzt">
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:paddingTop="15dp"
+                android:columnCount="2"
+                android:elevation="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_columnSpan="2"
+                    android:layout_marginLeft="40dp"
+                    android:gravity="center"
+                    android:text="摄像头状态"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cam01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:text="一号摄像头"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/cam_01_status"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="正常"></Button>
+
+                <TextView
+                    android:id="@+id/cam02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:text="二号摄像头"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/cam_02_status"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="正常"></Button>
+
+                <TextView
+                    android:id="@+id/cam03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:text="三号摄像头"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/cam_03_status"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="正常"
+                    ></Button>
+            </GridLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/gkjzt"
+            android:layout_width="wrap_content"
+            android:layout_height="225dp"
+            android:layout_toRightOf="@+id/sxtzt"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#000000"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <GridLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="15dp"
+                android:columnCount="2"
+                android:elevation="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_columnSpan="2"
+                    android:gravity="center"
+                    android:text="工控机状态"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cpu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center"
+                    android:text="CPU温度"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/cpu_status"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="45摄氏度"></Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center"
+                    android:text="显卡温度"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button android:id="@+id/card_status"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="45摄氏度"></Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center"
+                    android:text="知识图谱"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button android:id="@+id/graph_status"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="正在运行"></Button>
+            </GridLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="225dp"
+            android:layout_toRightOf="@+id/gkjzt"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#000000"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ckjk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/jxbzt"
+            android:layout_marginLeft="88dp"
+            android:layout_marginTop="50dp"
+            app:cardElevation="10dp">
+            <Button
+                android:id="@+id/monitorButton"
+                android:layout_height="64dp"
+                android:layout_width="200dp"
+                android:background="#004684"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:text="    查看监控    "></Button>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sxtzt"
+            android:layout_toRightOf="@id/ckjk"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="50dp"
+            app:cardElevation="10dp">
+            <Button
+                android:id="@+id/videoButton"
+                android:layout_height="64dp"
+                android:layout_width="200dp"
+                android:background="#FF5252"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:text="    查看录像    "></Button>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+    </RelativeLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

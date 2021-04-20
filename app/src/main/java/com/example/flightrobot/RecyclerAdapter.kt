@@ -1,15 +1,14 @@
 package com.example.flightrobot
 
-import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.flightrobot.models.operationResponse
+import com.example.flightrobot.models.orderResponse
 import taskResponse
 
 
@@ -43,7 +42,7 @@ class RecyclerAdapter(private val taskList: List<taskResponse.Data>) :
             it.setClass((holder.itemView.context), TaskActivity::class.java)
             val task_id: Int = taskpos.id
             it.putExtra("task_id", task_id)
-            holder.itemView.context.startActivity(it);
+            holder.itemView.context.startActivity(it)
         }
     }
 

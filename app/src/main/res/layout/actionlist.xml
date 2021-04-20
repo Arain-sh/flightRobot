@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -40,11 +40,14 @@
                 android:textSize="16sp"/>
             <TextView
                 android:id="@+id/action_description"
-                android:layout_width="300dp"
+                android:layout_width="260dp"
                 android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="description"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:ellipsize="end"/>
 
         </LinearLayout>
 

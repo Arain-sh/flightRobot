@@ -1,25 +1,20 @@
 package com.example.flightrobot.ui.gallery
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.afollestad.materialdialogs.LayoutMode
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.bottomsheets.BasicGridItem
-import com.afollestad.materialdialogs.bottomsheets.BottomSheet
-import com.afollestad.materialdialogs.bottomsheets.gridItems
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.flightrobot.*
-import com.tapadoo.alerter.Alerter
+import com.example.flightrobot.models.orderResponse
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_gallery.*
+import kotlinx.android.synthetic.main.fragment_taskinfo.*
+import kotlinx.android.synthetic.main.fragment_tasks.*
+import rxhttp.RxHttp
 
 class GalleryFragment : Fragment() {
 
@@ -33,32 +28,34 @@ class GalleryFragment : Fragment() {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        //val textView: TextView = root.findViewById(R.id.text_gallery)
         galleryViewModel.text.observe(viewLifecycleOwner, Observer {
         //    textView.text = it
         })
 
-        var desButton: Button = root.findViewById(R.id.des_task1)
-        var desButton2: Button = root.findViewById(R.id.des_task2)
-        var desButton3: Button = root.findViewById(R.id.des_task3)
-        desButton.setOnClickListener {
-            val it = Intent(root.context, TaskActivity::class.java)
-            val taskid: String = "task1"
-            it.putExtra("id", taskid)
-            startActivity(it)
-        }
-        desButton2.setOnClickListener {
-            val it = Intent(root.context, TaskActivity::class.java)
-            val taskid: String = "task1"
-            it.putExtra("id", taskid)
-            startActivity(it)
-        }
-        desButton3.setOnClickListener {
-            val it = Intent(root.context, TaskActivity::class.java)
-            val taskid: String = "task1"
-            it.putExtra("id", taskid)
-            startActivity(it)
-        }
+
+        // kotlin
+        RxHttp.get(this.getString(R.string.default_url) + "/api/v1/orders")
+            .asString()
+            .subscribe({ s ->
+                try {
+                    var s: orderResponse = Gson().fromJson(s, orderResponse::class.java)
+                    var orderList = s.data
+                    orderList?.let{
+                        this.activity?.runOnUiThread {
+                            //这里面进行UI的更新操作
+                            val layoutManager = GridLayoutManager(this.context, 3)
+                            orderRecycler.layoutManager = layoutManager
+                            val adapter = OrderRecyclerAdapter(orderList)
+                            orderRecycler.adapter = adapter
+                        }
+                    }
+                } catch (e: Exception) {
+                    println(e)
+                }
+            }, { throwable ->
+                println(throwable)
+                println("Sys Log: cannot get data")
+            })
 
         return root
     }

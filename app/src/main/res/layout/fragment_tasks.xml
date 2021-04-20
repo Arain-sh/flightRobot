@@ -16,4 +16,24 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="60dp"/>
 
+    <Button
+        android:id="@+id/createlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="260dp"
+        android:layout_marginBottom="28dp"
+        android:text="  创建任务清单  "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"></Button>
+
+    <Button
+        android:id="@+id/loadlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="28dp"
+        android:text="  加载任务清单  "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"></Button>>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

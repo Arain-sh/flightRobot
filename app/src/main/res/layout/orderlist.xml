@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <GridLayout
+            android:id="@+id/order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:elevation="10dp">
+
+            <TextView
+                android:id="@+id/order_task_id"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="任务ID"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/order_des"
+                android:text="查看详情"
+                android:layout_gravity="center"></Button>
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="发布编号："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/order_id"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="description..."
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="发布时间："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/order_created"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="2020年12月05日17:47:32"
+                android:layout_marginRight="15dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="执行结果："
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/order_run_status"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="已完成"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </GridLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

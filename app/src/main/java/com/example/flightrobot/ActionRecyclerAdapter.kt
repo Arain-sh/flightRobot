@@ -42,7 +42,9 @@ class ActionRecyclerAdapter(private val actionList: List<actionResponse.Data>) :
             it.setClass((holder.itemView.context), OperationActivity::class.java)
             val action_id: Int = taskpos.id
             it.putExtra("action_id", action_id)
-            holder.itemView.context.startActivity(it);
+            it.putExtra("task_id", taskpos.task_id)
+            MainActivity.isFromOrder = false
+            holder.itemView.context.startActivity(it)
         }
     }
 
@@ -50,6 +52,5 @@ class ActionRecyclerAdapter(private val actionList: List<actionResponse.Data>) :
         val title: TextView = itemView.findViewById(R.id.action_title)
         val id: TextView = itemView.findViewById(R.id.action_id)
         val des: TextView = itemView.findViewById(R.id.action_description)
-
     }
 }

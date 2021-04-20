@@ -5,5 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBar">#283593</color>
-    <color name="colorCyanButton">#018786</color>
+    <color name="colorCyanButton">#009688</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorButton">#64B5F6</color>
 </resources>

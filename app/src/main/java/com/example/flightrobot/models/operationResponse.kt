@@ -8,13 +8,13 @@ data class operationResponse(
     data class Data(
         val action_id: Int,
         val created_at: String,
-        val degree: String,
+        var degree: String,
         val description: String,
-        val element: String,
+        var element: String,
         val id: Int,
         val name: String,
-        val `object`: String,
-        val type: String,
+        var `object`: String,
+        var type: String,
         val updated_at: String
     )
 }

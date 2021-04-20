@@ -32,12 +32,13 @@
             android:elevation="5dp">
 
             <TextView
-                android:layout_width="200dp"
-                android:layout_height="50dp"
+                android:layout_width="400dp"
+                android:layout_height="100dp"
                 android:layout_columnSpan="2"
                 android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:gravity="center"
-                android:textSize="40dp"
+                android:textSize="65dp"
                 android:text="上电模块"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,9 +46,10 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
+                android:layout_width="400dp"
+                android:layout_height="100dp"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:layout_marginTop="5dp"
                 android:text="虚拟飞行员核心机上电"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -56,19 +58,20 @@
 
             <com.bitvale.switcher.SwitcherX
                 android:id="@+id/hxj_switch"
-                android:checked="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:switcher_on_color="#48ea8b"
-                app:switcher_off_color="#ff4651"
-                app:switcher_icon_color="#FFFFFF"
+                android:layout_marginTop="45dp"
+                android:checked="true"
                 app:elevation="4dp"
-                android:layout_marginTop="18dp"/>
+                app:switcher_icon_color="#FFFFFF"
+                app:switcher_off_color="#ff4651"
+                app:switcher_on_color="#48ea8b" />
 
             <TextView
-                android:layout_width="250dp"
-                android:layout_height="50dp"
+                android:layout_width="400dp"
+                android:layout_height="100dp"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:text="虚拟飞行员机械臂上电"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,19 +79,20 @@
 
             <com.bitvale.switcher.SwitcherX
                 android:id="@+id/jxb_switch"
-                android:checked="false"
+                android:checked="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:switcher_on_color="#48ea8b"
                 app:switcher_off_color="#ff4651"
                 app:switcher_icon_color="#FFFFFF"
                 app:elevation="4dp"
-                android:layout_marginTop="14dp"/>
+                android:layout_marginTop="35dp"/>
 
             <TextView
-                android:layout_width="250dp"
-                android:layout_height="50dp"
+                android:layout_width="400dp"
+                android:layout_height="100dp"
                 android:gravity="center"
+                android:textSize="30dp"
                 android:text="虚拟飞行员视觉系统上电"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,14 +100,14 @@
 
             <com.bitvale.switcher.SwitcherX
                 android:id="@+id/sjxi_switch"
-                android:checked="false"
+                android:checked="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:switcher_on_color="#48ea8b"
                 app:switcher_off_color="#ff4651"
                 app:switcher_icon_color="#FFFFFF"
                 app:elevation="4dp"
-                android:layout_marginTop="14dp"/>
+                android:layout_marginTop="35dp"/>
         </GridLayout>
 
 

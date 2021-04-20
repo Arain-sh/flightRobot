@@ -51,7 +51,7 @@
 
         <Button
             android:id="@+id/files_search"
-            android:text="search"></Button>
+            android:text="搜索"></Button>
     </GridLayout>
 
     <androidx.recyclerview.widget.RecyclerView

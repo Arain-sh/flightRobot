@@ -1,17 +1,23 @@
 package com.example.flightrobot
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.IBinder
 import android.view.MenuItem
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.gson.Gson
 import com.rajat.pdfviewer.PdfViewerActivity
-import fileResponse
 import kotlinx.android.synthetic.main.fragment_taskinfo.*
 import rxhttp.RxHttp
 import java.util.*
@@ -41,6 +47,7 @@ class FileViewActivity : AppCompatActivity() {
     override fun onBackPressed() {
 
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.getItemId() === android.R.id.home) {
             finish() // finish your activity

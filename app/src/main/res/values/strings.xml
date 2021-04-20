@@ -8,12 +8,16 @@
     <string name="action_settings">Settings</string>
     <string name="action_logout">退出登录</string>
     <string name="agree">确认修改</string>
+    <string name="push">确认发布</string>
     <string name="disagree">取消</string>
     <string name="fix_title">通知</string>
     <string name="fix_mes">是否修改该参数</string>
+    <string name="push_mes">是否确认发布该任务</string>
     <string name="query">搜索...</string>
     <string name="table_pagination_details">Page %d, showing items %d to %d.</string>
     <string name="default_url">http://192.168.10.10</string>
+    <string name="loading">登录中...</string>
+    <string name="loginSuccess">登录成功</string>
 
     <string name="menu_home">飞行任务库</string>
     <string name="menu_gallery">飞行任务执行监控</string>
@@ -21,6 +25,7 @@
     <string name="menu_sys_monitor">系统监控</string>
     <string name="menu_files">电子资料包</string>
     <string name="menu_settings">系统设置</string>
+    <string name="login">登录</string>
 
     <string name="inf_jd">经度</string>
     <string name="inf_wd">纬度</string>
@@ -72,5 +77,14 @@
         <item>Cam_05</item>
         <item>Cam_06</item>
     </string-array>
+    <string name="title_activity_order_list">OrderListActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>

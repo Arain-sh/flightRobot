@@ -16,6 +16,7 @@ import com.afollestad.materialdialogs.input.input
 import com.example.flightrobot.models.operationResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_operation.*
+import org.w3c.dom.Text
 import rxhttp.RxHttp
 
 
@@ -42,7 +43,9 @@ class OperationRecyclerAdapter(private val operationList: List<operationResponse
         val operationpos = operationList[position]
         holder.title.text = operationpos.name
         holder.id.text = "操作ID: " + operationpos.id.toString()
-        holder.des.text = "操作元件: " + operationpos.element + "\n" + "作用对象: " + operationpos.`object` + "\n" + "操作类型: " + operationpos.type
+        holder.ele.text = "操作元件: " + operationpos.element
+        holder.obj.text = "操作对象: " + operationpos.`object`
+        holder.type.text = "操作类型: " + operationpos.type
         holder.degree.text = operationpos.degree
         var fixButton: Button = holder.itemView.findViewById(R.id.operation_degree)
         fixButton.setOnClickListener {
@@ -65,6 +68,24 @@ class OperationRecyclerAdapter(private val operationList: List<operationResponse
                             println(throwable)
                             println("Sys Log: cannot get data")
                         })
+                    RxHttp.postForm("http://192.168.1.104:7890")
+                        .add("object", 2)
+                        .add("element", 15)
+                        .add("degree", 1)
+                        .add("type", "push")
+                        .add("end", "true")
+                        .asString()
+                        .subscribe({ s ->
+                            try {
+                                println("SYS LOG: " + s)
+
+                            } catch (e: Exception) {
+                                println(e)
+                            }
+                        }, { throwable ->
+                            println(throwable)
+                            println("Sys Log: cannot connect")
+                        })
                 }
                 positiveButton(R.string.agree)
                 negativeButton(R.string.disagree) { dialog ->
@@ -73,14 +94,14 @@ class OperationRecyclerAdapter(private val operationList: List<operationResponse
             }
             Toast.makeText(holder.itemView.context, "已修改.", Toast.LENGTH_SHORT).show();
         }
-        holder.itemView.setOnClickListener {
-        }
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.operation_title)
         val id: TextView = itemView.findViewById(R.id.operation_id)
-        val des: TextView = itemView.findViewById(R.id.operation_des)
+        val obj: TextView = itemView.findViewById(R.id.operation_obj)
+        val ele: TextView = itemView.findViewById(R.id.operation_ele)
+        val type: TextView = itemView.findViewById(R.id.operation_type)
         val degree: Button = itemView.findViewById(R.id.operation_degree)
 
     }

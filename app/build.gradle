@@ -99,4 +99,15 @@ dependencies {
     //pdf
     implementation 'com.github.afreakyelf:Pdf-Viewer:1.0.3'
 
+    //progress button
+    implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
+
+    //floating button
+    implementation 'com.robertlevonyan.view:CustomFloatingActionButton:3.0.1'
+
+    //androidx(推荐)
+    implementation 'com.github.angcyo:DslAdapter:2.6.0'
+
+    implementation "io.coil-kt:coil:0.11.0"
+
 }

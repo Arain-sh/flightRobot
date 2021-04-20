@@ -1,60 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    android:layout_margin="12dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#000000"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        android:layout_margin="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:columnCount="5">
+        <TextView
+            android:id="@+id/operation_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/operation_title"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="32dp"
-                tools:ignore="MissingConstraints"
-                tools:text="title" />
-            <!--  android:layout_gravity="center"  让整个容器居中  -->
-            <TextView
-                android:id="@+id/operation_id"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:text="description"
-                android:textSize="16sp"/>
-            <TextView
-                android:id="@+id/operation_des"
-                android:layout_width="300dp"
-                android:layout_height="120dp"
-                android:gravity="center"
-                android:text="description"
-                android:textSize="16sp"/>
-
-            <Button
-                android:id="@+id/operation_degree"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:text="0"></Button>
-        </LinearLayout>
-
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:textColor="#000000"
+            android:textSize="32dp"
+            tools:ignore="MissingConstraints"
+            tools:text="title"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_columnSpan="5"
+            />
+        <TextView
+            android:id="@+id/operation_id"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="description"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/operation_ele"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="description"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/operation_obj"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="description"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/operation_type"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="description"
+            android:textSize="16sp"/>
+        <Button
+            android:id="@+id/operation_degree"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="30dp"
+            android:background="#714cfe"
+            android:textColor="#FFFFFF"
+            android:text="0"></Button>
+    </GridLayout>
 
 
     </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+
+
+
+
