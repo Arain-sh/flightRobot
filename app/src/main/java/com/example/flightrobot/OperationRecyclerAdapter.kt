@@ -1,22 +1,20 @@
 package com.example.flightrobot
 
-import android.app.Activity
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.WhichButton
+import com.afollestad.materialdialogs.actions.setActionButtonEnabled
+import com.afollestad.materialdialogs.input.getInputField
 import com.afollestad.materialdialogs.input.input
 import com.example.flightrobot.models.operationResponse
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_operation.*
-import org.w3c.dom.Text
 import rxhttp.RxHttp
 
 
@@ -50,13 +48,25 @@ class OperationRecyclerAdapter(private val operationList: List<operationResponse
         var fixButton: Button = holder.itemView.findViewById(R.id.operation_degree)
         fixButton.setOnClickListener {
             MaterialDialog(holder.itemView.context).show {
-                input { dialog, text ->
+                input (maxLength = 12, waitForPositiveButton = false) { dialog, text ->
                     // Text submitted with the action button
                     // kotlin
-                    fixButton.text = text
-                    RxHttp.postForm("http://192.168.10.10/api/v1/operations/update")
+                    val inputField = dialog.getInputField()
+                    var isValid = false
+                    when(text.toString()) {
+                        "0","1" -> isValid = true
+                        else -> {}
+                    }
+
+                    inputField?.error = if (isValid) null else "该值应为0或1!"
+                    dialog.setActionButtonEnabled(WhichButton.POSITIVE, isValid)
+                }
+                positiveButton(R.string.agree) {
+                    val inputField: EditText = it.getInputField()
+                    fixButton.text = inputField.text
+                    RxHttp.postForm(holder.itemView.context.getString(R.string.default_url) + "/api/v1/operations/update")
                         .add("id", operationpos.id)
-                        .add("degree", text)
+                        .add("degree", inputField.text)
                         .asString()
                         .subscribe({ s ->
                             try {
@@ -68,26 +78,7 @@ class OperationRecyclerAdapter(private val operationList: List<operationResponse
                             println(throwable)
                             println("Sys Log: cannot get data")
                         })
-                    RxHttp.postForm("http://192.168.1.104:7890")
-                        .add("object", 2)
-                        .add("element", 15)
-                        .add("degree", 1)
-                        .add("type", "push")
-                        .add("end", "true")
-                        .asString()
-                        .subscribe({ s ->
-                            try {
-                                println("SYS LOG: " + s)
-
-                            } catch (e: Exception) {
-                                println(e)
-                            }
-                        }, { throwable ->
-                            println(throwable)
-                            println("Sys Log: cannot connect")
-                        })
                 }
-                positiveButton(R.string.agree)
                 negativeButton(R.string.disagree) { dialog ->
                     // Do something
                 }

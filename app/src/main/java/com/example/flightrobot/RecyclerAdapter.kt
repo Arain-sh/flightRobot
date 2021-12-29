@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.flightrobot.models.operationResponse
-import com.example.flightrobot.models.orderResponse
-import taskResponse
+import com.example.flightrobot.models.taskResponse
 
 
 /**

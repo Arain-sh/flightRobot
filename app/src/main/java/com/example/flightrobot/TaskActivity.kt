@@ -1,6 +1,5 @@
 package com.example.flightrobot
 
-import actionResponse
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
@@ -10,7 +9,10 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.flightrobot.models.actionResponse
+import com.example.flightrobot.models.taskResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_taskinfo.*
 import kotlinx.android.synthetic.main.fragment_tasks.*
@@ -35,6 +37,8 @@ class TaskActivity : AppCompatActivity() {
         Objects.requireNonNull(getSupportActionBar())?.setDisplayHomeAsUpEnabled(true)
         var task_id: Int = intent.getIntExtra("task_id", 1)
         var nDialog: ProgressDialog
+        val action_search = findViewById<SearchView>(R.id.action_search)
+        var filterList : MutableList<actionResponse.Data> = mutableListOf()
         nDialog = ProgressDialog(this)
         nDialog.setMessage("Loading..")
         nDialog.setTitle("数据加载中...")
@@ -59,6 +63,33 @@ class TaskActivity : AppCompatActivity() {
                         actionRecycler.adapter = adapter
                         sleep(250)
                         nDialog.dismiss()
+
+                        action_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                            override fun onQueryTextSubmit(query: String?): Boolean {
+                                return false
+                            }
+
+                            override fun onQueryTextChange(newText: String?): Boolean {
+                                filterList = fil(newText!!)
+                                actionRecycler.adapter = ActionRecyclerAdapter(filterList)
+                                return false
+                            }
+                            fun fil(constraint: String) : MutableList<actionResponse.Data> {
+                                val charSearch = constraint
+                                if (charSearch.isEmpty()) {
+                                    filterList = actionList
+                                } else {
+                                    val resultList : MutableList<actionResponse.Data> = mutableListOf()
+                                    for (row in actionList) {
+                                        if (row.name.contains(charSearch) or row.id.toString().contains(charSearch)) {
+                                            resultList.add(row)
+                                        }
+                                    }
+                                    filterList = resultList
+                                }
+                                return filterList
+                            }
+                        })
                     }
                 } catch (e: Exception) {
                     println(e)

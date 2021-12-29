@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.flightrobot"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -42,6 +42,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -109,5 +112,10 @@ dependencies {
     implementation 'com.github.angcyo:DslAdapter:2.6.0'
 
     implementation "io.coil-kt:coil:0.11.0"
+
+    //video-player
+    implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:2.0.6'
+
+
 
 }

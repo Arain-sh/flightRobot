@@ -1,10 +1,15 @@
 package com.example.flightrobot.ui.slideshow
 
+import android.content.Context
 import android.os.Bundle
+import android.os.IBinder
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -21,6 +26,7 @@ import com.example.flightrobot.models.airinfoResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_operation.*
 import kotlinx.android.synthetic.main.fragment_taskinfo.*
+import kotlinx.android.synthetic.main.fragment_taskinfo.view.*
 import rxhttp.RxHttp
 
 class SlideshowFragment : Fragment() {
@@ -109,29 +115,29 @@ class SlideshowFragment : Fragment() {
                     var airinfos = s.data.get(0)
 
                     airinfos?.let{
-                        jdEdit.hint = airinfos.jd
-                        wdEdit.hint = airinfos.wd
-                        gdEdit.hint = airinfos.gd
-                        yxgdEdit.hint = airinfos.yxgd
-                        sdEdit.hint = airinfos.sd
-                        yxsdEdit.hint = airinfos.yxsd
-                        czsdEdit.hint = airinfos.czsd
-                        yxczsdEdit.hint = airinfos.yxczsd
-                        hxEdit.hint = airinfos.hx
-                        yxhxEdit.hint = airinfos.yxhx
-                        wxdgdEdit.hint = airinfos.wxdgd
+                        jdEdit.hint = airinfos.jd.plus(" °").toString()
+                        wdEdit.hint = airinfos.wd.plus(" °").toString()
+                        gdEdit.hint = (airinfos.gd.plus(" m")).toString()
+                        yxgdEdit.hint = (airinfos.yxgd.plus("m")).toString()
+                        sdEdit.hint = airinfos.sd.plus(" m/s").toString()
+                        yxsdEdit.hint = airinfos.yxsd.plus(" m/s").toString()
+                        czsdEdit.hint = airinfos.czsd.plus(" m/s").toString()
+                        yxczsdEdit.hint = airinfos.yxczsd.plus(" m/s").toString()
+                        hxEdit.hint = airinfos.hx.plus(" °").toString()
+                        yxhxEdit.hint = airinfos.yxhx.plus(" °").toString()
+                        wxdgdEdit.hint = airinfos.wxdgd.plus(" m").toString()
                         mhsEdit.hint = airinfos.mhs
-                        pljEdit.hint = airinfos.plj
-                        gjEdit.hint = airinfos.gj
-                        chjEdit.hint = airinfos.chj
+                        pljEdit.hint = airinfos.plj.plus(" °").toString()
+                        gjEdit.hint = airinfos.gj.plus(" °").toString()
+                        chjEdit.hint = airinfos.chj.plus(" °").toString()
                         fdjzsEdit.hint = airinfos.fdjzs
-                        fdjpqwdEdit.hint = airinfos.fdjpqwd
-                        fdjymjdEdit.hint = airinfos.fdjymjd
-                        fdjnjEdit.hint = airinfos.fdjnj
-                        bjhgjEdit.hint = airinfos.bjhgj
-                        bjfyjEdit.hint = airinfos.bjfyj
-                        bjzyhgjEdit.hint = airinfos.bjzyhgj
-                        bjzyfyjEdit.hint = airinfos.bjzyfyj
+                        fdjpqwdEdit.hint = airinfos.fdjpqwd.plus(" °C").toString()
+                        fdjymjdEdit.hint = airinfos.fdjymjd.plus(" °").toString()
+                        fdjnjEdit.hint = airinfos.fdjnj.plus(" °").toString()
+                        bjhgjEdit.hint = airinfos.bjhgj.plus(" °").toString()
+                        bjfyjEdit.hint = airinfos.bjfyj.plus(" °").toString()
+                        bjzyhgjEdit.hint = airinfos.bjzyhgj.plus(" °").toString()
+                        bjzyfyjEdit.hint = airinfos.bjzyfyj.plus(" °").toString()
                     }
 
                 } catch (e: Exception) {
@@ -150,6 +156,7 @@ class SlideshowFragment : Fragment() {
                     positiveButton(R.string.agree) { dialog ->
                         // Do something
                         // kotlin
+                        jdEdit.clearFocus()
                         RxHttp.postForm(requireParentFragment().getString(R.string.default_url) + "/api/v1/airinfos")
                             .add("id", 1)
                             .add("jd", jdEdit.text)
@@ -179,6 +186,8 @@ class SlideshowFragment : Fragment() {
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
                         // Do something
+                        wdEdit.clearFocus()
+
                         RxHttp.postForm(requireParentFragment().getString(R.string.default_url) + "/api/v1/airinfos")
                             .add("id", 1)
                             .add("wd", wdEdit.text)
@@ -207,6 +216,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        gdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -222,6 +232,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        yxgdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -237,6 +248,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        sdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -252,6 +264,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        yxsdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -267,6 +280,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        czsdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -282,6 +296,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        yxczsdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -297,6 +312,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        hxEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -312,6 +328,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        yxhxEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -327,6 +344,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        wxdgdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -342,6 +360,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        mhsEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -357,6 +376,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        pljEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -372,6 +392,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        gjEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -387,6 +408,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        chjEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -402,6 +424,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        fdjzsEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -417,6 +440,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        fdjpqwdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -432,6 +456,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        fdjymjdEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -447,6 +472,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        fdjnjEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -462,6 +488,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        bjhgjEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -477,6 +504,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        bjfyjEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -492,6 +520,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        bjzyhgjEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->
@@ -507,6 +536,7 @@ class SlideshowFragment : Fragment() {
                     title(R.string.fix_title)
                     message(R.string.fix_mes)
                     positiveButton(R.string.agree) { dialog ->
+                        bjzyfyjEdit.clearFocus()
                         // Do something
                     }
                     negativeButton(R.string.disagree) { dialog ->

@@ -1,6 +1,6 @@
 package com.example.flightrobot.models
 
-data class fileResponse(
+data class actionResponse(
     val code: Int,
     val `data`: MutableList<Data>,
     val status: String
@@ -9,9 +9,8 @@ data class fileResponse(
         val created_at: Any,
         val description: String,
         val id: Int,
-        val image: String,
-        val title: String,
-        val updated_at: Any,
-        val url: String
+        val name: String,
+        val task_id: Int,
+        val updated_at: Any
     )
 }

@@ -2,7 +2,7 @@ package com.example.flightrobot.models
 
 data class orderResponse(
     val code: Int,
-    val `data`: List<Data>,
+    val `data`: MutableList<Data>,
     val status: String
 ) {
     data class Data(
@@ -14,6 +14,7 @@ data class orderResponse(
         val status: String,
         val task_id: String,
         val updated_at: String,
-        val user_id: String
+        val user_id: String,
+        //val closed: Boolean
     )
 }

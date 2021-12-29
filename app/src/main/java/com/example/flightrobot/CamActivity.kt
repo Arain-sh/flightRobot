@@ -47,7 +47,7 @@ class CamActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cam)
-        Objects.requireNonNull(getSupportActionBar())?.setDisplayHomeAsUpEnabled(true)
+        Objects.requireNonNull(getSupportActionBar())!!.setDisplayHomeAsUpEnabled(true)
         var nDialog: ProgressDialog
         nDialog = ProgressDialog(this)
         nDialog.setMessage("Loading..")
@@ -61,8 +61,11 @@ class CamActivity : AppCompatActivity() {
         var cam01_img: ImageView = findViewById(R.id.cam01_rt)
         var cam02_img: ImageView = findViewById(R.id.cam02_rt)
         //var url = "http://192.168.1.198:8080/shareVideo0/realTime.jpg"
-        var url = "http://192.168.1.198:8080/shareVideo0/realTime.jpg"
-        var url01 = "http://192.168.1.198:8080/shareVideo1/realTime.jpg"
+        //var url = "http://192.168.1.198:8080/shareVideo0/realTime.jpg"
+        var url = "http://n.sinaimg.cn/sinacn00/63/w640h1023/20181007/603f-hkrzvkw0220959.jpg"
+        var url01 = "https://img30.51tietu.net/pic/2016-083109/20160831091954esfeb42hytk132443.jpg"
+        //var url01 = "http://192.168.1.198:8080/shareVideo1/realTime.jpg"
+
         runOnUiThread {
             timer = fixedRateTimer("", false, 0, 500) {
                 try {

@@ -1,17 +1,18 @@
 package com.example.flightrobot
 
-import actionResponse
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.input
 import com.angcyo.dsladapter.*
 import com.angcyo.dsladapter.dsl.DslDemoItem
+import com.example.flightrobot.models.actionResponse
 import com.example.flightrobot.models.operationResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_order_task.*
@@ -28,7 +29,7 @@ class orderTaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_task)
-        Objects.requireNonNull(getSupportActionBar())?.setDisplayHomeAsUpEnabled(true)
+        Objects.requireNonNull(supportActionBar)?.setDisplayHomeAsUpEnabled(true)
         var nDialog: ProgressDialog
         nDialog = ProgressDialog(this)
         nDialog.setMessage("Loading..")
@@ -39,6 +40,8 @@ class orderTaskActivity : AppCompatActivity() {
 
         var task_id: Int = intent.getIntExtra("task_id", 1)
         var order_id: Int = intent.getIntExtra("order_id", 1)
+        var del: Int = intent.getIntExtra("del",0)
+        var delAction: String = intent.getStringExtra("delAction")!!
 
         setTitle("任务: " + task_id.toString())
 
@@ -116,98 +119,106 @@ class orderTaskActivity : AppCompatActivity() {
                                                     //println("SYS LOG: " + operationList)
                                                     // 设置operations
                                                     for (j in operationList.indices) {
-                                                        val item = operationList[j]
-                                                        dslItem(DslDemoItem()) {
-                                                            itemGroups = mutableListOf("group${i}")
+                                                        if (del != 0 && i == delAction.toInt()-1 && j == del-1) {
 
-                                                            itemBindOverride =
-                                                                { itemHolder, _, _, _ ->
-                                                                    itemGroupParams.apply {
-                                                                        itemHolder.tv(R.id.operation_title)?.text =
-                                                                            item.name
-                                                                        itemHolder.tv(R.id.operation_id)?.text =
-                                                                            item.id.toString()
-                                                                        itemHolder.tv(R.id.operation_ele)?.text =
-                                                                            "操作元件: " + item.element
-                                                                        itemHolder.tv(R.id.operation_obj)?.text =
-                                                                            "操作对象: " + item.`object`
-                                                                        itemHolder.tv(R.id.operation_type)?.text =
-                                                                            "操作类型: " + item.type
-                                                                        itemHolder.tv(R.id.operation_degree)?.text =
-                                                                            item.degree
+                                                        } else {
+                                                            println("j is $j")
+                                                            println("del is $del")
+                                                            val item = operationList[j]
+                                                            dslItem(DslDemoItem()) {
+                                                                itemGroups = mutableListOf("group${i}")
 
-                                                                        var fixButton: Button =
-                                                                            itemHolder.itemView.findViewById(
-                                                                                R.id.operation_degree
-                                                                            )
-                                                                        fixButton.setOnClickListener {
-                                                                            MaterialDialog(
-                                                                                itemHolder.itemView.context
-                                                                            ).show {
-                                                                                input { dialog, text ->
-                                                                                    // Text submitted with the action button
-                                                                                    // kotlin
-                                                                                    fixButton.text =
-                                                                                        text
-                                                                                    RxHttp.postForm(
-                                                                                        "http://192.168.10.10/api/v1/operations/update"
-                                                                                    )
-                                                                                        .add(
-                                                                                            "id",
-                                                                                            item.id
-                                                                                        )
-                                                                                        .add(
-                                                                                            "degree",
-                                                                                            text
-                                                                                        )
-                                                                                        .asString()
-                                                                                        .subscribe(
-                                                                                            { s ->
-                                                                                                try {
-                                                                                                    println(
-                                                                                                        s
-                                                                                                    )
-                                                                                                } catch (e: Exception) {
-                                                                                                    println(
-                                                                                                        e
-                                                                                                    )
-                                                                                                }
-                                                                                            },
-                                                                                            { throwable ->
-                                                                                                println(
-                                                                                                    throwable
-                                                                                                )
-                                                                                                println(
-                                                                                                    "Sys Log: cannot get data"
-                                                                                                )
-                                                                                            })
-                                                                                }
-                                                                                positiveButton(R.string.agree)
-                                                                                negativeButton(R.string.disagree) { dialog ->
-                                                                                    // Do something
-                                                                                }
-                                                                            }
-                                                                            Toast.makeText(
-                                                                                itemHolder.itemView.context,
-                                                                                "已修改.",
-                                                                                Toast.LENGTH_SHORT
-                                                                            ).show();
-                                                                        }
-                                                                        if (isLastPosition()) {
-                                                                            itemHolder.itemView.setBackgroundResource(
-                                                                                R.drawable.shape_group_all
-                                                                            )
-                                                                        } else {
-                                                                            itemHolder.itemView
-                                                                                .setBackgroundColor(
-                                                                                    resources.getColor(
-                                                                                        R.color.white
-                                                                                    )
+                                                                itemBindOverride =
+                                                                    { itemHolder, _, _, _ ->
+                                                                        itemGroupParams.apply {
+                                                                            itemHolder.tv(R.id.operation_title)?.text =
+                                                                                item.name
+                                                                            itemHolder.tv(R.id.operation_id)?.text =
+                                                                                item.id.toString()
+                                                                            itemHolder.tv(R.id.operation_ele)?.text =
+                                                                                "操作元件: " + item.element
+                                                                            itemHolder.tv(R.id.operation_obj)?.text =
+                                                                                "操作对象: " + item.`object`
+                                                                            itemHolder.tv(R.id.operation_type)?.text =
+                                                                                "操作类型: " + item.type
+                                                                            itemHolder.tv(R.id.operation_degree)?.text =
+                                                                                item.degree
+
+                                                                            var fixButton: Button =
+                                                                                itemHolder.itemView.findViewById(
+                                                                                    R.id.operation_degree
                                                                                 )
+                                                                            fixButton.setOnClickListener {
+                                                                                MaterialDialog(
+                                                                                    itemHolder.itemView.context
+                                                                                ).show {
+                                                                                    input { dialog, text ->
+                                                                                        // Text submitted with the action button
+                                                                                        // kotlin
+                                                                                        fixButton.text =
+                                                                                            text
+                                                                                        RxHttp.postForm(
+                                                                                            "http://192.168.10.10/api/v1/operations/update"
+                                                                                        )
+                                                                                            .add(
+                                                                                                "id",
+                                                                                                item.id
+                                                                                            )
+                                                                                            .add(
+                                                                                                "degree",
+                                                                                                text
+                                                                                            )
+                                                                                            .asString()
+                                                                                            .subscribe(
+                                                                                                { s ->
+                                                                                                    try {
+                                                                                                        println(
+                                                                                                            s
+                                                                                                        )
+                                                                                                    } catch (e: Exception) {
+                                                                                                        println(
+                                                                                                            e
+                                                                                                        )
+                                                                                                    }
+                                                                                                },
+                                                                                                { throwable ->
+                                                                                                    println(
+                                                                                                        throwable
+                                                                                                    )
+                                                                                                    println(
+                                                                                                        "Sys Log: cannot get data"
+                                                                                                    )
+                                                                                                })
+                                                                                    }
+                                                                                    positiveButton(R.string.agree)
+                                                                                    negativeButton(R.string.disagree) { dialog ->
+                                                                                        // Do something
+                                                                                    }
+                                                                                }
+                                                                                Toast.makeText(
+                                                                                    itemHolder.itemView.context,
+                                                                                    "已修改.",
+                                                                                    Toast.LENGTH_SHORT
+                                                                                ).show();
+                                                                            }
+                                                                            if (isLastPosition()) {
+                                                                                itemHolder.itemView.setBackgroundResource(
+                                                                                    R.drawable.shape_group_all
+                                                                                )
+                                                                            } else {
+                                                                                itemHolder.itemView
+                                                                                    .setBackgroundColor(
+                                                                                        resources.getColor(
+                                                                                            R.color.white
+                                                                                        )
+                                                                                    )
+                                                                            }
                                                                         }
                                                                     }
-                                                                }
+                                                            }
                                                         }
+
+
                                                     }
 
                                                 } catch (e: Exception) {

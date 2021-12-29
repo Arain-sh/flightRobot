@@ -26,7 +26,7 @@
 
     <style name="AppTheme.fade">
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorBar</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorCyanButton</item>
     </style>

@@ -8,11 +8,11 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.angcyo.dsladapter.*
+import com.example.flightrobot.models.taskResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_create_list.*
 import kotlinx.android.synthetic.main.fragment_tasks.*
 import rxhttp.RxHttp
-import taskResponse
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -96,27 +96,22 @@ class CreateListActivity : AppCompatActivity() {
                                     str = str + taskList[i].id.toString() + ","
                                 }
                             }
-
-
                             // kotlin
                             RxHttp.postForm(this.getString(R.string.default_url) + "/api/v1/orderlists/store")
                                 .add("tasks", str)
                                 .asString()
                                 .subscribe({ s ->
                                     try {
-
                                     } catch (e: Exception) {
                                         println(e)
                                     }
                                 }, { throwable ->
                                     println(throwable)
-                                    println("Sys Log: cannot get data")
                                 })
                             Toast.makeText(this, "发布成功", Toast.LENGTH_SHORT).show();
                             finish()
                         }
-
-                        Thread.sleep(250)
+                        Thread.sleep(50)
                     }
                 } catch (e: Exception) {
                     println(e)

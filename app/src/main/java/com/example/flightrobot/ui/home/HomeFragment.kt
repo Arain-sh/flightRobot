@@ -9,14 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.flightrobot.FileViewActivity
-import com.example.flightrobot.FlightDBActivity
-import com.example.flightrobot.MainActivity
-import com.example.flightrobot.R
+import com.example.flightrobot.*
 import com.example.flightrobot.ui.tasks.TasksFragment
 import com.tapadoo.alerter.Alerter
 
@@ -38,31 +36,15 @@ class HomeFragment : Fragment() {
             //textView.text = it
         })
 
-
         val imgButton737: ImageView = root.findViewById(R.id.db737)
         val imgButton787: ImageView = root.findViewById(R.id.db787)
         val imgButton919: ImageView = root.findViewById(R.id.db919)
 
         imgButton737.setOnClickListener {
-            Alerter.create(this.activity)
-                .setTitle("提示")
-                .setText("是否选择该数据库")
-                .setBackgroundColorRes(R.color.colorBar)
-                .addButton("加载数据库", R.style.AlertButton, View.OnClickListener {
-                    Toast.makeText(this.context, "Okay Clicked", Toast.LENGTH_LONG).show()
-                    val it = Intent(root.context, FlightDBActivity::class.java)
-                    val dbid: String = "737"
-                    it.putExtra("id", dbid)
-                    startActivity(it)
-                })
-                .addButton("仅查看数据库", R.style.AlertButton, View.OnClickListener {
-                    Toast.makeText(this.context, "No Clicked", Toast.LENGTH_LONG).show()
-                    val it = Intent(root.context, FlightDBActivity::class.java)
-                    val dbid: String = "737"
-                    it.putExtra("id", dbid)
-                    startActivity(it)
-                })
-                .show()
+            val it = Intent(root.context, FlightDBActivity::class.java)
+            val dbid: String = "737"
+            it.putExtra("id", dbid)
+            startActivity(it)
         }
 
         imgButton787.setOnClickListener {
@@ -71,14 +53,14 @@ class HomeFragment : Fragment() {
                 .setText("是否选择该数据库")
                 .setBackgroundColorRes(R.color.colorBar)
                 .addButton("加载数据库", R.style.AlertButton, View.OnClickListener {
-                    Toast.makeText(this.context, "Okay Clicked", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this.context, "加载成功", Toast.LENGTH_LONG).show()
                     val it = Intent(root.context, FlightDBActivity::class.java)
                     val dbid: String = "787"
                     it.putExtra("id", dbid)
                     startActivity(it)
                 })
                 .addButton("仅查看数据库", R.style.AlertButton, View.OnClickListener {
-                    Toast.makeText(this.context, "No Clicked", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this.context, "取消", Toast.LENGTH_LONG).show()
                     val it = Intent(root.context, FlightDBActivity::class.java)
                     val dbid: String = "787"
                     it.putExtra("id", dbid)
@@ -92,14 +74,14 @@ class HomeFragment : Fragment() {
                 .setText("是否选择该数据库")
                 .setBackgroundColorRes(R.color.colorBar)
                 .addButton("加载数据库", R.style.AlertButton, View.OnClickListener {
-                    Toast.makeText(this.context, "Okay Clicked", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this.context, "加载成功", Toast.LENGTH_LONG).show()
                     val it = Intent(root.context, FlightDBActivity::class.java)
                     val dbid: String = "919"
                     it.putExtra("id", dbid)
                     startActivity(it)
                 })
-                .addButton("仅查看数据库", R.style.AlertButton, View.OnClickListener {
-                    Toast.makeText(this.context, "No Clicked", Toast.LENGTH_LONG).show()
+                .addButton("查看数据库", R.style.AlertButton, View.OnClickListener {
+                    //Toast.makeText(this.context, "No Clicked", Toast.LENGTH_LONG).show()
                     val it = Intent(root.context, FlightDBActivity::class.java)
                     val dbid: String = "919"
                     it.putExtra("id", dbid)

@@ -22,6 +22,8 @@ import com.github.razir.progressbutton.showProgress
 import com.google.gson.Gson
 import com.tapadoo.alerter.Alerter
 import rxhttp.RxHttp
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 
 class LoginActivity : AppCompatActivity() {
@@ -43,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
         val login: Button = findViewById(R.id.loginbutton)
         bindProgressButton(login)
         login.attachTextChangeAnimator()
+
 
         login.setOnClickListener {
             // 设置 setResult，触发 BaseActivity 的 onActivityResult 方法

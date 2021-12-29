@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"
-                android:checked="true"
+                android:checked="false"
                 app:elevation="4dp"
                 app:switcher_icon_color="#FFFFFF"
                 app:switcher_off_color="#ff4651"

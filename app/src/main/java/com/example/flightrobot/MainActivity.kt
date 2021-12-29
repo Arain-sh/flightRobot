@@ -11,6 +11,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -25,6 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
+import com.tapadoo.alerter.Alerter
 import rxhttp.RxHttp
 
 
@@ -41,12 +43,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //获取参数
         // kotlin
+
         RxHttp.get(this.getString(R.string.default_url) + "/api/v1/sysinfos")
             .asString()
             .subscribe({ s ->
                 try {
                     var s: sysinfoResponse = Gson().fromJson(s, sysinfoResponse::class.java)
-
                     var sysinfo = s.data.get(0)
                     println("SYSLOG: " + sysinfo)
                     if (sysinfo.graph == 0) user.isLogin = true
@@ -64,9 +66,12 @@ class MainActivity : AppCompatActivity() {
             }, { throwable ->
                 println(throwable)
                 println("Sys Log: cannot get data")
+                Alerter.create(this)
+                    .setTitle("密码错误")
+                    .setText("请正确填写密码...")
+                    .setBackgroundColorRes(R.color.colorAccent) // or setBackgroundColorInt(Color.CYAN)
+                    .show()
             })
-
-
         // Hide the status bar.
         window.setFlags(
             android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -86,7 +91,6 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> println("to be finished")
             R.id.logout_button -> {
                 //LoginActivity.startForResult(this)
                 val it = Intent()
@@ -138,6 +142,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        //val navUserName : TextView = findViewById(R.id.navUserName)
+        //val navUserId : TextView = findViewById(R.id.navUserId)
         //用户登出
     }
 

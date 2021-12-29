@@ -1,21 +1,22 @@
 package com.example.flightrobot
 
-import actionResponse
 import android.os.Bundle
 import android.os.Looper
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.example.flightrobot.models.actionResponse
 import com.example.flightrobot.models.operationResponse
+import com.example.flightrobot.models.taskResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_operation.*
-import kotlinx.android.synthetic.main.fragment_taskinfo.*
+import kotlinx.android.synthetic.main.fragment_tasks.*
 import rxhttp.RxHttp
 import java.util.*
 
@@ -25,9 +26,11 @@ class OperationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_operation)
         Objects.requireNonNull(getSupportActionBar())?.setDisplayHomeAsUpEnabled(true)
-        var action_id: Int = intent.getIntExtra("action_id", 1)
+        val action_id: Int = intent.getIntExtra("action_id", 1)
         val task_id: Int = intent.getIntExtra("task_id", 1)
-
+        val operation_search = findViewById<SearchView>(R.id.operation_search)
+        var filterList : MutableList<operationResponse.Data> = mutableListOf()
+        var del = 0
         // kotlin
         RxHttp.postForm(this.getString(R.string.default_url) + "/api/v1/operations")
             .add("action_id", action_id)
@@ -35,7 +38,7 @@ class OperationActivity : AppCompatActivity() {
             .subscribe({ s ->
                 try {
                     var s: operationResponse = Gson().fromJson(s, operationResponse::class.java)
-                    var operationList = s.data
+                    val operationList = s.data
                     println("SYS LOG: " + operationList)
                     // kotlin
                     operationList?.let {
@@ -47,6 +50,33 @@ class OperationActivity : AppCompatActivity() {
                             val adapter = OperationRecyclerAdapter(operationList)
                             operationRecycler.adapter = adapter
 
+                            operation_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                                override fun onQueryTextSubmit(query: String?): Boolean {
+                                    return false
+                                }
+
+                                override fun onQueryTextChange(newText: String?): Boolean {
+                                    filterList = fil(newText!!)
+                                    operationRecycler.adapter = OperationRecyclerAdapter(filterList)
+                                    return false
+                                }
+                                fun fil(constraint: String) : MutableList<operationResponse.Data> {
+                                    val charSearch = constraint
+                                    if (charSearch.isEmpty()) {
+                                        filterList = operationList
+                                    } else {
+                                        val resultList : MutableList<operationResponse.Data> = mutableListOf()
+                                        for (row in operationList) {
+                                            if (row.name.contains(charSearch) or row.id.toString().contains(charSearch)) {
+                                                resultList.add(row)
+                                            }
+                                        }
+                                        filterList = resultList
+                                    }
+                                    return filterList
+                                }
+                            })
+
                             val itemTouchHelper =
                                 ItemTouchHelper(ReViewTouchCallback(object : IActionListener {
                                     override fun onItemMove(src: Int, target: Int): Boolean {
@@ -57,7 +87,9 @@ class OperationActivity : AppCompatActivity() {
 
                                     override fun onItemRemove(pos: Int) {
                                         //adapter.getDataList().remove(pos)
+                                        operationList.removeAt(pos)
                                         adapter.notifyItemRemoved(pos)
+                                        del = pos+1
                                     }
                                 }))
                             itemTouchHelper.attachToRecyclerView(operationRecycler)
@@ -72,6 +104,7 @@ class OperationActivity : AppCompatActivity() {
                 println(throwable)
                 println("Sys Log: cannot get data")
             })
+
         val push: com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton = findViewById(
             R.id.custom_fab
         )
@@ -92,10 +125,13 @@ class OperationActivity : AppCompatActivity() {
                                 .add("user_id", 1)
                                 .add("task_id", task_id)
                                 .add("run_status", "finished")
+                                .add("run_step", del)
+                                .add("status", (action_id).toString())
                                 .asString()
                                 .subscribe({ s ->
                                     try {
                                         Looper.prepare()
+                                        println("Delete Num: $del")
                                         Toast.makeText(this.context, "任务发布成功!", Toast.LENGTH_LONG)
                                             .show()
                                         Looper.loop()
@@ -124,11 +160,14 @@ class OperationActivity : AppCompatActivity() {
                                                         var operationList = s.data
                                                         println("SYS LOG: " + operationList)
                                                         for (op in operationList) {
-                                                            RxHttp.postForm("http://192.168.1.104:7890")
+                                                            RxHttp.postForm(this.context.getString(R.string.com_url))
                                                                 .add("object", op.`object`)
                                                                 .add("element", op.element)
                                                                 .add("degree", op.degree)
                                                                 .add("type", op.type)
+                                                                .add("showObject", op.showObject)
+                                                                .add("showdcs_id", op.showdcs_id)
+                                                                .add("showtarget_value", op.showtarget_value)
                                                                 .add("end", "true")
                                                                 .asString()
                                                                 .subscribe({ s ->
@@ -165,7 +204,6 @@ class OperationActivity : AppCompatActivity() {
                 }
             }
         }
-
 
 
         window.setFlags(

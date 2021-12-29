@@ -8,15 +8,19 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.input
+import com.example.flightrobot.models.orderResponse
+import com.example.flightrobot.models.taskResponse
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_video.*
 import kotlinx.android.synthetic.main.fragment_tasks.*
+import orderlist
 import rxhttp.RxHttp
-import taskResponse
 import java.lang.Thread.sleep
 import java.util.*
 
@@ -38,7 +42,9 @@ class FlightDBActivity : AppCompatActivity() {
 
         Objects.requireNonNull(getSupportActionBar())?.setDisplayHomeAsUpEnabled(true)
         var dbid: String = intent.getStringExtra("id")!!
-        var taskList: List<taskResponse.Data> ?= null
+        var taskList: MutableList<taskResponse.Data> = mutableListOf()
+        val task_search = findViewById<SearchView>(R.id.task_search)
+        var filterList : MutableList<taskResponse.Data> = mutableListOf()
 
         var nDialog: ProgressDialog
         nDialog = ProgressDialog(this)
@@ -57,8 +63,6 @@ class FlightDBActivity : AppCompatActivity() {
             Toast.makeText(this, "...", Toast.LENGTH_SHORT).show();
         }
 
-        var loadList: Button = findViewById(R.id.loadlist)
-
         // kotlin
         RxHttp.get(this.getString(R.string.default_url) + "/api/v1/tasks")
             .asString()
@@ -66,19 +70,48 @@ class FlightDBActivity : AppCompatActivity() {
                 try {
                     var s: taskResponse = Gson().fromJson(s, taskResponse::class.java)
                     taskList = s.data
-                    for (i in s.data.indices) {
-                        //println("s = ${s.data.get(i).name}")
+                    taskList?.let {
+                        for (i in s.data.indices) {
+                            //println("s = ${s.data.get(i).name}")
+                        }
+                        this.runOnUiThread {
+                            //这里面进行UI的更新操作
+                            //使用Recycler
+                            val layoutManager = GridLayoutManager(this, 3)
+                            mRecycler.layoutManager = layoutManager
+                            val adapter = RecyclerAdapter(taskList)
+                            mRecycler.adapter = adapter
+                            sleep(150)
+                            nDialog.dismiss()
+                            task_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                                override fun onQueryTextSubmit(query: String?): Boolean {
+                                    return false
+                                }
+
+                                override fun onQueryTextChange(newText: String?): Boolean {
+                                    filterList = fil(newText!!)
+                                    mRecycler.adapter = RecyclerAdapter(filterList)
+                                    return false
+                                }
+                                fun fil(constraint: String) : MutableList<taskResponse.Data> {
+                                    val charSearch = constraint
+                                    if (charSearch.isEmpty()) {
+                                        filterList = taskList
+                                    } else {
+                                        val resultList : MutableList<taskResponse.Data> = mutableListOf()
+                                        for (row in taskList) {
+                                            if (row.name.contains(charSearch) or row.id.toString().contains(charSearch)) {
+                                                resultList.add(row)
+                                            }
+                                        }
+                                        filterList = resultList
+                                    }
+                                    return filterList
+                                }
+                            })
+                        }
                     }
-                    runOnUiThread {
-                        //这里面进行UI的更新操作
-                        //使用Recycler
-                        val layoutManager = GridLayoutManager(this, 3)
-                        mRecycler.layoutManager = layoutManager
-                        val adapter = RecyclerAdapter(taskList!!)
-                        mRecycler.adapter = adapter
-                        sleep(250)
-                        nDialog.dismiss()
-                    }
+
                 } catch (e: Exception) {
                     println(e)
                 }
@@ -86,6 +119,54 @@ class FlightDBActivity : AppCompatActivity() {
                 println(throwable)
                 println("Sys Log: cannot get data")
             })
+
+        var loadList: Button = findViewById(R.id.loadlist)
+        loadList.setOnClickListener {
+            var mulTaskList: MutableList<taskResponse.Data> = mutableListOf()
+            taskList?.let {
+                for (it in taskList!!) {
+                    mulTaskList.add(it)
+                }
+                println("tasklist: ${taskList!!.size}")
+                println("multl: ${mulTaskList!!.size}")
+            }
+            // kotlin
+            taskList?.let {
+                RxHttp.get(this.getString(R.string.default_url) + "/api/v1/orderlists")
+                    .asString()
+                    .subscribe({ s ->
+                        try {
+                            var s: orderlist = Gson().fromJson(s, orderlist::class.java)
+                            //println("s: ${s.data.last().tasks}")
+                            var j = 0
+                            for ( i in mulTaskList!!.indices ) {
+                                if (s.data.last().tasks.contains((i+1).toString())) {
+                                    //mulTaskList!!.removeAt(i)
+                                    //println("indice: $i")
+                                } else {
+                                    //println("remove indice: $i")
+                                    mulTaskList!!.removeAt(i-j)
+                                    j = j + 1
+                                }
+                            }
+                            runOnUiThread {
+                                //这里面进行UI的更新操作
+                                //使用Recycler
+                                val layoutManager = GridLayoutManager(this, 3)
+                                mRecycler.layoutManager = layoutManager
+                                val adapter = RecyclerAdapter(mulTaskList!!)
+                                mRecycler.adapter = adapter
+                            }
+                        } catch (e: Exception) {
+                            println(e)
+                        }
+                    }, { throwable ->
+                        println(throwable)
+                        println("Sys Log: cannot get data")
+                    })
+            }
+        }
+
 
         window.setFlags(
             android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN,
