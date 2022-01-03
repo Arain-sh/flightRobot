@@ -37,4 +37,9 @@
         android:name="com.example.flightrobot.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings"/>
+    <fragment
+        android:id="@+id/nav_detect"
+        android:name="com.example.flightrobot.ui.settings.ATFragment"
+        android:label="@string/menu_detect"
+        tools:layout="@layout/autodetect"/>
 </navigation>

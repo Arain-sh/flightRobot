@@ -122,12 +122,9 @@ class orderTaskActivity : AppCompatActivity() {
                                                         if (del != 0 && i == delAction.toInt()-1 && j == del-1) {
 
                                                         } else {
-                                                            println("j is $j")
-                                                            println("del is $del")
                                                             val item = operationList[j]
                                                             dslItem(DslDemoItem()) {
                                                                 itemGroups = mutableListOf("group${i}")
-
                                                                 itemBindOverride =
                                                                     { itemHolder, _, _, _ ->
                                                                         itemGroupParams.apply {
@@ -144,7 +141,7 @@ class orderTaskActivity : AppCompatActivity() {
                                                                             itemHolder.tv(R.id.operation_degree)?.text =
                                                                                 item.degree
 
-                                                                            var fixButton: Button =
+                                                                            /*var fixButton: Button =
                                                                                 itemHolder.itemView.findViewById(
                                                                                     R.id.operation_degree
                                                                                 )
@@ -212,13 +209,11 @@ class orderTaskActivity : AppCompatActivity() {
                                                                                             R.color.white
                                                                                         )
                                                                                     )
-                                                                            }
+                                                                            }*/
                                                                         }
                                                                     }
                                                             }
                                                         }
-
-
                                                     }
 
                                                 } catch (e: Exception) {

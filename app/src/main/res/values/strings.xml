@@ -9,13 +9,14 @@
     <string name="action_logout">退出登录</string>
     <string name="agree">确认修改</string>
     <string name="push">确认发布</string>
+    <string name="delete">确认删除</string>
     <string name="disagree">取消</string>
     <string name="fix_title">通知</string>
     <string name="fix_mes">是否修改该参数</string>
     <string name="push_mes">是否确认发布该任务</string>
     <string name="query">搜索...</string>
     <string name="table_pagination_details">Page %d, showing items %d to %d.</string>
-    <string name="default_url">http://192.168.10.10</string>
+    <string name="default_url">http://192.168.0.7</string>
     <string name="com_url">http://10.18.18.32:7890</string>>
     <string name="cam_url">http://10.18.18.100</string>>
     <string name="loading">登录中...</string>
@@ -27,6 +28,7 @@
     <string name="menu_sys_monitor">系统监控</string>
     <string name="menu_files">电子资料包</string>
     <string name="menu_settings">系统设置</string>
+    <string name="menu_detect">系统自检</string>
     <string name="login">登录</string>
 
     <string name="inf_jd">经度</string>

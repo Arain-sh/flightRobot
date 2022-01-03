@@ -45,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
         val login: Button = findViewById(R.id.loginbutton)
         bindProgressButton(login)
         login.attachTextChangeAnimator()
+        finish()
 
 
         login.setOnClickListener {

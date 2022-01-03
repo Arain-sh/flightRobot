@@ -94,6 +94,76 @@ class OperationActivity : AppCompatActivity() {
                                 }))
                             itemTouchHelper.attachToRecyclerView(operationRecycler)
 
+                            val push: com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton = findViewById(
+                                R.id.custom_fab
+                            )
+                            if (MainActivity.isFromOrder) {
+                                runOnUiThread {
+                                    push.isVisible = false
+                                }
+                            } else {
+                                push.setOnClickListener {
+                                    this.let { it1 ->
+                                        MaterialDialog(it1).show {
+                                            title(R.string.fix_title)
+                                            message(R.string.push_mes)
+                                            positiveButton(R.string.push) { dialog ->
+                                                // Do something
+                                                // kotlin
+                                                RxHttp.postForm(getString(R.string.default_url) + "/api/v1/orders/store")
+                                                    .add("user_id", 1)
+                                                    .add("task_id", task_id)
+                                                    .add("run_status", "finished")
+                                                    .add("run_step", del)
+                                                    .add("status", (action_id).toString())
+                                                    .asString()
+                                                    .subscribe({ s ->
+                                                        try {
+                                                            Looper.prepare()
+                                                            println("Delete Num: $del")
+                                                            Toast.makeText(this.context, "任务发布成功!", Toast.LENGTH_LONG)
+                                                                .show()
+                                                            Looper.loop()
+                                                        } catch (e: Exception) {
+                                                            println(e)
+                                                        }
+                                                    }, { throwable ->
+                                                        println(throwable)
+                                                        println("Sys Log: cannot get data")
+                                                    })
+
+                                                for (op in operationList) {
+                                                    println("op: $op")
+                                                    RxHttp.postForm(this.context.getString(R.string.com_url))
+                                                        .add("object", op.`object`)
+                                                        .add("element", op.element)
+                                                        .add("degree", op.degree)
+                                                        .add("type", op.type)
+                                                        .add("showObject", op.showObject)
+                                                        .add("showdcs_id", op.showdcs_id)
+                                                        .add("showtarget_value", op.showtarget_value)
+                                                        .add("task_name", "")
+                                                        .add("end", "true")
+                                                        .asString()
+                                                        .subscribe({ s ->
+                                                            try {
+                                                                println("SYS LOG: " + s)
+                                                            } catch (e: Exception) {
+                                                                println(e)
+                                                            }
+                                                        }, { throwable ->
+                                                            println(throwable)
+                                                            println("Sys Log: cannot connect")
+                                                        })
+                                                }
+                                            }
+                                            negativeButton(R.string.disagree) { dialog ->
+                                                // Do something
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -104,106 +174,6 @@ class OperationActivity : AppCompatActivity() {
                 println(throwable)
                 println("Sys Log: cannot get data")
             })
-
-        val push: com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton = findViewById(
-            R.id.custom_fab
-        )
-        if (MainActivity.isFromOrder) {
-            runOnUiThread {
-                push.isVisible = false
-            }
-        } else {
-            push.setOnClickListener {
-                this.let { it1 ->
-                    MaterialDialog(it1).show {
-                        title(R.string.fix_title)
-                        message(R.string.push_mes)
-                        positiveButton(R.string.push) { dialog ->
-                            // Do something
-                            // kotlin
-                            RxHttp.postForm(getString(R.string.default_url) + "/api/v1/orders/store")
-                                .add("user_id", 1)
-                                .add("task_id", task_id)
-                                .add("run_status", "finished")
-                                .add("run_step", del)
-                                .add("status", (action_id).toString())
-                                .asString()
-                                .subscribe({ s ->
-                                    try {
-                                        Looper.prepare()
-                                        println("Delete Num: $del")
-                                        Toast.makeText(this.context, "任务发布成功!", Toast.LENGTH_LONG)
-                                            .show()
-                                        Looper.loop()
-                                    } catch (e: Exception) {
-                                        println(e)
-                                    }
-                                }, { throwable ->
-                                    println(throwable)
-                                    println("Sys Log: cannot get data")
-                                })
-
-                            RxHttp.postForm(this.context.getString(R.string.default_url) + "/api/v1/actions")
-                                .add("task_id", task_id)
-                                .asString()
-                                .subscribe({ s ->
-                                    try {
-                                        var s: actionResponse = Gson().fromJson(s, actionResponse::class.java)
-                                        var actionList = s.data
-                                        for (item in actionList) {
-                                            RxHttp.postForm(this.context.getString(R.string.default_url) + "/api/v1/operations")
-                                                .add("action_id", item.id)
-                                                .asString()
-                                                .subscribe({ s ->
-                                                    try {
-                                                        var s: operationResponse = Gson().fromJson(s, operationResponse::class.java)
-                                                        var operationList = s.data
-                                                        println("SYS LOG: " + operationList)
-                                                        for (op in operationList) {
-                                                            RxHttp.postForm(this.context.getString(R.string.com_url))
-                                                                .add("object", op.`object`)
-                                                                .add("element", op.element)
-                                                                .add("degree", op.degree)
-                                                                .add("type", op.type)
-                                                                .add("showObject", op.showObject)
-                                                                .add("showdcs_id", op.showdcs_id)
-                                                                .add("showtarget_value", op.showtarget_value)
-                                                                .add("end", "true")
-                                                                .asString()
-                                                                .subscribe({ s ->
-                                                                    try {
-                                                                        println("SYS LOG: " + s)
-                                                                    } catch (e: Exception) {
-                                                                        println(e)
-                                                                    }
-                                                                }, { throwable ->
-                                                                    println(throwable)
-                                                                    println("Sys Log: cannot connect")
-                                                                })
-                                                        }
-                                                    } catch (e: Exception) {
-                                                        println(e)
-                                                    }
-                                                }, { throwable ->
-                                                    println(throwable)
-                                                    println("Sys Log: cannot get data")
-                                                })
-                                        }
-                                    } catch (e: Exception) {
-                                        println(e)
-                                    }
-                                }, { throwable ->
-                                    println(throwable)
-                                    println("Sys Log: cannot get data")
-                                })
-                        }
-                        negativeButton(R.string.disagree) { dialog ->
-                            // Do something
-                        }
-                    }
-                }
-            }
-        }
 
 
         window.setFlags(

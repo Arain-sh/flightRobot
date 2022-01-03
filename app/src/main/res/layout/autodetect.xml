@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.SettingsFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="#000000"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sysdetect"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/sysdetect"
+            app:layout_constraintEnd_toEndOf="@id/sysdetect"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/sysdetect"
+            app:layout_constraintTop_toTopOf="@id/sysdetect">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="5dp"
+                android:columnCount="1"
+                android:elevation="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="640dp"
+                    android:layout_height="60dp"
+                    android:layout_columnSpan="1"
+                    android:gravity="center"
+                    android:text="系统自检"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textSize="40dp" />
+
+                <TextView
+                    android:layout_width="560dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="A:飞行知识组件"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="1.数据服务器加载；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="2.知识图谱加载；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="3.通信组件加载；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="560dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="B:飞行视觉组件"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="1.组件初始化操作；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="2.配置文件加载；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="3.相机连接；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="4.ABC组件通信建立；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="560dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="C:飞行机械组件"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="1.工控机初始化操作；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="2.机械臂初始化配置；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="3.通信组件加载成功；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="560dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="D:飞行控制组件"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="1.服务器群组运行；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="2.数据库加载；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="3.飞行监控及控制软件运行；"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </GridLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/sysdetect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="36dp"
+        android:text=" 系统状态检查 "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"></Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

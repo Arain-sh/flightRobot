@@ -4,27 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateListActivity">
+    tools:context=".ui.tasks.TasksFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/createRecycler"
+        android:id="@+id/orderview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="60dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/pushlist"
+        android:id="@+id/orderview_push"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="36dp"
-        android:text="  发布清单  "
+        android:text="  发布任务  "
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"></Button>
+
+    <Button
+        android:id="@+id/orderview_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginStart="15dp"
+        android:text="  删除此项清单  "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
     </Button>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

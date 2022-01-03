@@ -4,27 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateListActivity">
+    tools:context=".ui.gallery.GalleryFragment">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/flightorder_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textCursorDrawable="@null"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/createRecycler"
+        android:id="@+id/flightorderRecycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="60dp"/>
-
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
-        android:id="@+id/pushlist"
+        android:id="@+id/addlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="36dp"
-        android:text="  发布清单  "
+        android:text="  新增飞行清单  "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
     </Button>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

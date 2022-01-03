@@ -1,12 +1,10 @@
-package com.example.flightrobot.models
-
-data class taskResponse(
+data class taskRes(
     val code: Int,
-    val `data`: MutableList<Data>,
+    val `data`: Data,
     val status: String
 ) {
     data class Data(
-        val actions: MutableList<Action>,
+        val actions: List<Action>,
         val created_at: Any,
         val description: String,
         val id: Int,
@@ -19,7 +17,7 @@ data class taskResponse(
             val description: String,
             val id: Int,
             val name: String,
-            val operations: MutableList<Operation>,
+            val operations: List<Operation>,
             val task_id: Int,
             val updated_at: Any
         ) {

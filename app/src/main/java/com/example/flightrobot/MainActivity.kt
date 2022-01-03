@@ -135,6 +135,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_gallery,
                 R.id.nav_slideshow,
                 R.id.nav_settings,
+                R.id.nav_detect,
                 R.id.nav_files,
                 R.id.nav_sys_monitor
             ), drawerLayout

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/order_action_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="#000000"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="20dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_action_linear">
+
+            <TextView
+                android:id="@+id/order_action_title"
+                android:layout_width="300dp"
+                android:layout_height="120dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="32dp"
+                tools:ignore="MissingConstraints"
+                tools:text="title" />
+
+            <TextView
+                android:id="@+id/order_action_id"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text=""
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/order_action_description"
+                android:layout_width="360dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/order_action_mark"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text=""
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

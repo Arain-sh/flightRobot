@@ -8,4 +8,6 @@
     <color name="colorCyanButton">#009688</color>
     <color name="white">#FFFFFF</color>
     <color name="colorButton">#64B5F6</color>
+    <color name="lightPurple">#bbdefb</color>
+
 </resources>
