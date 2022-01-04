@@ -79,206 +79,6 @@ class CreateOrderActivity : AppCompatActivity() {
         var actionFisrt : MutableList<String> = mutableListOf()
         var taskIndex : MutableList<String> = mutableListOf()
 
-
-        /*
-        // kotlin
-        RxHttp.get(this.getString(R.string.default_url) + "/api/v1/tasks")
-            .asString()
-            .subscribe({ s ->
-                try {
-                    var s: taskResponse = Gson().fromJson(s, taskResponse::class.java)
-                    var taskList = s.data
-                    tasks = s.data
-                    if (taskList.isNotEmpty()) {
-                        for (i in taskList.indices) {
-                            val itm = taskList[i]
-                            // get actions of tasks
-                            RxHttp.postForm(getString(R.string.default_url) + "/api/v1/actions")
-                                .add("task_id", itm.id)
-                                .asString()
-                                .subscribe({ s ->
-                                    try {
-                                        var s: actionResponse = Gson().fromJson(s, actionResponse::class.java)
-                                        var actionList = s.data
-                                        actions.addAll(s.data)
-                                        // get operations
-                                        for (k in actionList.indices) {
-                                            RxHttp.postForm(getString(R.string.default_url) + "/api/v1/operations")
-                                                .add("action_id", actionList[k].id)
-                                                .asString()
-                                                .subscribe({ s ->
-                                                    try {
-                                                        var s: operationResponse = Gson().fromJson(
-                                                            s,
-                                                            operationResponse::class.java
-                                                        )
-                                                        operations.addAll(s.data)
-                                                    } catch (e: Exception) {
-                                                        println(e)
-                                                    }
-                                                }, { throwable ->
-                                                    println(throwable)
-                                                })
-                                        }
-                                    } catch (e: Exception) {
-                                        println(e)
-                                    }
-                                }, { throwable ->
-                                    println(throwable)
-                                })
-                        }
-                    }
-                } catch (e: Exception) {
-                    println(e)
-                }
-            }, { throwable ->
-                println(throwable)
-                println("Sys Log: cannot get data")
-            })
-
-        runOnUiThread {
-            sleep(6000)
-            nDialog.dismiss()
-            //这里面进行UI的更新操作
-            val layoutManager = GridLayoutManager(this, 1)
-            createOrderlist.layoutManager = layoutManager
-            createOrderlist.adapter = DslAdapter()
-            createOrderlist.addItemDecoration(DslItemDecoration())
-
-            //HoverItemDecoration().attachToRecyclerView(createOrderlist)
-            if (tasks.isNotEmpty()) {
-                val item = DslAdapterItem()
-                item.itemLayoutId = R.layout.taskaction
-                item.itemBindOverride = { itemHolder, _, _, _ ->
-                    createOrderlist.dslAdapter {
-                        for (i in tasks.indices) {
-                            val itm = tasks[i]
-                            dslItem(R.layout.taskaction) {
-                                itemIsGroupHead = true //启动分组折叠
-                                //itemIsHover = true //关闭悬停
-                                itemGroups = mutableListOf("group${i}")
-                                //itemGroupExtend = false
-                                itemBindOverride =
-                                    { itemHolder, itemPosition, adapterItem, _ ->
-                                        itemHolder.tv(R.id.fold_button)?.text =
-                                            if (itemGroupExtend) "折叠" else "展开"
-                                        itemHolder.tv(R.id.action_title)?.text =
-                                            itm.name
-                                        itemHolder.tv(R.id.action_id)?.text =
-                                            "任务ID: " + itm.id.toString()
-                                        itemHolder.tv(R.id.action_description)?.text =
-                                            itm.description
-
-                                        itemHolder.click(R.id.fold_button) {
-                                            itemGroupExtend = !itemGroupExtend
-                                        }
-
-                                        if (itemIsSelected) {
-                                            itemHolder.tv(R.id.action_mark)!!.setBackgroundColor(
-                                                Color.GREEN)
-                                        }
-                                        itemHolder.tv(R.id.action_mark)!!.apply {
-                                            setBackgroundColor(
-                                                when {
-                                                    itemIsSelected -> Color.GREEN
-                                                    else -> Color.WHITE
-                                                }
-                                            )
-                                        }
-                                        itemHolder.tv(R.id.action_mark)!!.apply {
-                                            setBackgroundColor(
-                                                when {
-                                                    itemIsSelected -> Color.GREEN
-                                                    else -> Color.WHITE
-                                                }
-                                            )
-                                        }
-
-                                        itemGroupParams.apply {
-                                            if (isOnlyOne()) {
-                                                itemHolder.itemView.setBackgroundResource(
-                                                    R.drawable.shape_group_all
-                                                )
-                                            } else if (isFirstPosition()) {
-                                                itemHolder.itemView
-                                                    .setBackgroundResource(R.drawable.shape_group_header)
-                                            } else {
-                                                itemHolder.itemView
-                                                    .setBackgroundColor(
-                                                        resources.getColor(
-                                                            R.color.white
-                                                        )
-                                                    )
-                                            }
-                                        }
-                                    }
-                                itemClick = {
-                                    itemIsSelected = !itemIsSelected
-                                    updateItemDepend()
-                                }
-                            }
-
-                            // 设置operations
-                            for (j in actions.indices) {
-                                val item = actions[j]
-                                if (actions[j].task_id == i+1) {
-                                    for (k in operations.indices) {
-                                        if (operations[k].action_id == actions[j].id) {
-                                            dslItem(DslDemoItem()) {
-                                                itemGroups = mutableListOf("group${i}")
-                                                itemIsSelected = true
-                                                itemBindOverride =
-                                                    { itemHolder, _, _, _ ->
-                                                        itemGroupParams.apply {
-                                                            itemHolder.tv(R.id.operation_title)?.text =
-                                                                operations[k].name
-                                                            itemHolder.tv(R.id.operation_id)?.text =
-                                                                operations[k].id.toString()
-                                                            itemHolder.tv(R.id.operation_ele)?.text =
-                                                                "操作元件: " + operations[k].element
-                                                            itemHolder.tv(R.id.operation_obj)?.text =
-                                                                "操作对象: " + operations[k].`object`
-                                                            itemHolder.tv(R.id.operation_type)?.text =
-                                                                "操作类型: " + operations[k].type
-                                                            itemHolder.tv(R.id.operation_degree)?.text =
-                                                                operations[k].degree
-                                                            if (k == 0) {
-                                                                itemHolder.tv(R.id.action_operation_name)?.text = actions[j].name
-                                                                itemTopInsert = 12
-                                                                itemDecorationColor = R.color.lightPurple
-                                                            }
-
-                                                            if (itemIsSelected) {
-                                                                itemHolder.tv(R.id.operation_mark)!!.setBackgroundColor(
-                                                                    Color.GREEN)
-                                                            }
-                                                            itemHolder.tv(R.id.operation_mark)!!.apply {
-                                                                setBackgroundColor(
-                                                                    when {
-                                                                        itemIsSelected -> Color.GREEN
-                                                                        else -> Color.WHITE
-                                                                    }
-                                                                )
-                                                            }
-                                                        }
-                                                    }
-                                                itemClick = {
-                                                    itemIsSelected = !itemIsSelected
-                                                    updateItemDepend()
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                createOrderlist._dslAdapter?.addLastItem(item)
-            }
-
-        }*/
-
         // kotlin
         RxHttp.get(getString(R.string.default_url) + "/api/v1/tasks")
             .asString()
@@ -384,7 +184,6 @@ class CreateOrderActivity : AppCompatActivity() {
                                                     }
                                                 }
                                             }
-                                            println("memeda: $operations")
                                         }
                                         var actionList = itm.actions
                                         for (k in actionList.indices) {
@@ -392,6 +191,7 @@ class CreateOrderActivity : AppCompatActivity() {
                                             // 设置operations
                                             for (j in operationList.indices) {
                                                 val opitem = operationList[j]
+                                                println(operationList[0])
                                                 dslItem(DslDemoItem()) {
                                                     itemGroups = mutableListOf("group${i}")
                                                     itemIsSelected = true
@@ -438,7 +238,7 @@ class CreateOrderActivity : AppCompatActivity() {
                                                                         }
                                                                     )
                                                                 }
-                                                                /*var fixButton: Button =
+                                                                var fixButton: Button =
                                                                     itemHolder.itemView.findViewById(
                                                                         R.id.operation_degree
                                                                     )
@@ -449,42 +249,23 @@ class CreateOrderActivity : AppCompatActivity() {
                                                                         input { dialog, text ->
                                                                             // Text submitted with the action button
                                                                             // kotlin
-                                                                            fixButton.text =
-                                                                                text
-                                                                            RxHttp.postForm(
-                                                                                "http://192.168.10.10/api/v1/operations/update"
-                                                                            )
-                                                                                .add(
-                                                                                    "id",
-                                                                                    item.id
-                                                                                )
-                                                                                .add(
-                                                                                    "degree",
-                                                                                    text
-                                                                                )
+                                                                        }
+                                                                        positiveButton(R.string.agree) {
+                                                                            val inputField: EditText = it.getInputField()
+                                                                            fixButton.text = inputField.text
+                                                                            RxHttp.postForm(getString(R.string.default_url) + "/api/v1/operations/update")
+                                                                                .add("id", opitem.id)
+                                                                                .add("degree", inputField.text)
                                                                                 .asString()
-                                                                                .subscribe(
-                                                                                    { s ->
-                                                                                        try {
-                                                                                            println(
-                                                                                                s
-                                                                                            )
-                                                                                        } catch (e: Exception) {
-                                                                                            println(
-                                                                                                e
-                                                                                            )
-                                                                                        }
-                                                                                    },
-                                                                                    { throwable ->
-                                                                                        println(
-                                                                                            throwable
-                                                                                        )
-                                                                                        println(
-                                                                                            "Sys Log: cannot get data"
-                                                                                        )
+                                                                                .subscribe({ s ->
+                                                                                    try {
+                                                                                        println(s)
+                                                                                    } catch (e: Exception) {
+                                                                                            println(e)
+                                                                                    } }, { throwable ->
+                                                                                    println(throwable)
                                                                                     })
                                                                         }
-                                                                        positiveButton(R.string.agree)
                                                                         negativeButton(R.string.disagree) { dialog ->
                                                                             // Do something
                                                                         }
@@ -495,18 +276,6 @@ class CreateOrderActivity : AppCompatActivity() {
                                                                         Toast.LENGTH_SHORT
                                                                     ).show();
                                                                 }
-                                                                if (isLastPosition()) {
-                                                                    itemHolder.itemView.setBackgroundResource(
-                                                                        R.drawable.shape_group_all
-                                                                    )
-                                                                } else {
-                                                                    itemHolder.itemView
-                                                                        .setBackgroundColor(
-                                                                            resources.getColor(
-                                                                                R.color.white
-                                                                            )
-                                                                        )
-                                                                }*/
                                                             }
                                                         }
                                                     itemClick = {

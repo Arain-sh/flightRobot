@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
+        android:id="@+id/nav_order"
+        android:name="com.example.flightrobot.ui.gallery.OrderViewFragment"
+        android:label="@string/menu_order"
+        tools:layout="@layout/fragment_orderview" />
+
+    <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.flightrobot.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"

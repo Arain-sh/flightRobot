@@ -52,14 +52,14 @@ class HomeFragment : Fragment() {
                 .setTitle("提示")
                 .setText("是否选择该数据库")
                 .setBackgroundColorRes(R.color.colorBar)
-                .addButton("加载数据库", R.style.AlertButton, View.OnClickListener {
+                .addButton("加载任务清单", R.style.AlertButton, View.OnClickListener {
                     Toast.makeText(this.context, "加载成功", Toast.LENGTH_LONG).show()
                     val it = Intent(root.context, OrderListMainActivity::class.java)
                     val dbid: String = "787"
                     it.putExtra("id", dbid)
                     startActivity(it)
                 })
-                .addButton("仅查看数据库", R.style.AlertButton, View.OnClickListener {
+                .addButton("新建任务清单", R.style.AlertButton, View.OnClickListener {
                     //Toast.makeText(this.context, "取消", Toast.LENGTH_LONG).show()
                     val it = Intent(root.context, CreateOrderActivity::class.java)
                     val dbid: String = "787"

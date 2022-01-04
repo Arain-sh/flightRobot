@@ -31,9 +31,10 @@
             <TextView
                 android:id="@+id/order_task_id"
                 android:layout_width="160dp"
-                android:layout_height="50dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
+                android:textSize="18dp"
                 android:text="任务ID"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,10 +45,11 @@
                 android:layout_gravity="center"></Button>
 
             <TextView
-                android:layout_width="160dp"
-                android:layout_height="50dp"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:gravity="center"
                 android:text="发布编号："
+                android:textSize="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +57,7 @@
             <TextView
                 android:id="@+id/order_id"
                 android:layout_width="160dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:gravity="center"
                 android:text="description..."
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -63,9 +65,10 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
-                android:layout_width="160dp"
-                android:layout_height="50dp"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:gravity="center"
+                android:textSize="16dp"
                 android:text="发布时间："
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,10 +86,11 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="160dp"
+                android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:text="执行结果："
+                android:textSize="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -97,6 +101,7 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:text="已完成"
+                android:textSize="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

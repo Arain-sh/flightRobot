@@ -9,9 +9,9 @@
             android:icon="@mipmap/task"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_order"
             android:icon="@mipmap/list"
-            android:title="@string/menu_gallery" />
+            android:title="@string/menu_order" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@mipmap/info"
@@ -24,6 +24,10 @@
             android:id="@+id/nav_files"
             android:icon="@mipmap/file"
             android:title="@string/menu_files" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@mipmap/list"
+            android:title="@string/menu_gallery" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@mipmap/setting"

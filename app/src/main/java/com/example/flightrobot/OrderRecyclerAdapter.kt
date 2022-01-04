@@ -53,24 +53,35 @@ class OrderRecyclerAdapter (private val orderList: List<orderResponse.Data>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val orderpos = orderList[position]
         holder.order_id.text = orderpos.id.toString()
-        holder.task_id.text = "任务ID: " + orderpos.task_id
+        holder.task_id.text = "任务名称: " + orderpos.status
         var timeString : String = orderpos.created_at.toString().subSequence(IntRange(0, 9)) as String
         holder.order_created.text = timeString.plus('\n').plus(orderpos.created_at.toString().subSequence(IntRange(11, 15)))
 
-        if (orderpos.run_status == "pending") {
+        if (orderpos.task_id == "0") {
             holder.order_status.text = "等待中..."
         }
-        if (orderpos.run_status == "running") {
+        if (orderpos.task_id == "1") {
             holder.order_status.text = "正在执行..."
         }
-        if (orderpos.run_status == "finished") {
+        if (orderpos.task_id == "2") {
             holder.order_status.text = "已完成."
             holder.order_status.setTextColor(holder.itemView.context.getColor(R.color.colorCyanButton))
         }
-
+        if (orderpos.task_id == "3") {
+            holder.order_status.text = "已取消."
+            holder.order_status.setTextColor(holder.itemView.context.getColor(R.color.colorRed))
+        }
         var desButton: Button = holder.itemView.findViewById(R.id.order_des)
         desButton.setOnClickListener {
-            RxHttp.postForm(holder.itemView.context.getString(R.string.default_url) + "/api/v1/actions")
+            val it = Intent(holder.itemView.context, OrderHistoryDetailActivity::class.java)
+            val run_step: Int = orderpos.run_step
+            val task_name: String = orderpos.status
+            it.putExtra("run_step", run_step)
+            it.putExtra("task_name", task_name)
+            it.putExtra("id", orderpos.id)
+            holder.itemView.context.startActivity(it)
+            /*
+            RxHttp.postForm(holder.itemView.context.getString(R.string.default_url) + "/api/v1/orders")
                 .add("task_id", orderpos.task_id)
                 .asString()
                 .subscribe({ s ->
@@ -91,7 +102,7 @@ class OrderRecyclerAdapter (private val orderList: List<orderResponse.Data>) :
                 }, { throwable ->
                     println(throwable)
                     println(": cannot get data")
-                })
+                })*/
             Toast.makeText(holder.itemView.context, ".", Toast.LENGTH_SHORT).show()
         }
     }

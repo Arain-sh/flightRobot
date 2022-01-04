@@ -40,6 +40,7 @@ class OperationActivity : AppCompatActivity() {
                     var s: operationResponse = Gson().fromJson(s, operationResponse::class.java)
                     val operationList = s.data
                     println("SYS LOG: " + operationList)
+                    var oplist = ""
                     // kotlin
                     operationList?.let {
                         runOnUiThread {
@@ -50,6 +51,11 @@ class OperationActivity : AppCompatActivity() {
                             val adapter = OperationRecyclerAdapter(operationList)
                             operationRecycler.adapter = adapter
 
+                            for (i in operationList.indices) {
+                                oplist += operationList[i].id
+                                oplist += ","
+                            }
+                            println("oplist: $oplist")
                             operation_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                                 override fun onQueryTextSubmit(query: String?): Boolean {
                                     return false
@@ -112,10 +118,10 @@ class OperationActivity : AppCompatActivity() {
                                                 // kotlin
                                                 RxHttp.postForm(getString(R.string.default_url) + "/api/v1/orders/store")
                                                     .add("user_id", 1)
-                                                    .add("task_id", task_id)
-                                                    .add("run_status", "finished")
-                                                    .add("run_step", del)
-                                                    .add("status", (action_id).toString())
+                                                    .add("task_id", 0)
+                                                    .add("run_status", oplist)
+                                                    .add("run_step", 0)
+                                                    .add("status", "test Task")
                                                     .asString()
                                                     .subscribe({ s ->
                                                         try {

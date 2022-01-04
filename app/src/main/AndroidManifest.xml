@@ -174,8 +174,31 @@
         </activity>
 
 
+
         <activity
             android:name=".OrderListMainActivity"
+            android:label="任务清单"
+            android:theme="@style/AppTheme.fade">
+            <intent-filter>
+                <action android:name="android.intent.action.DATABASE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".EditOrderActivity"
+            android:label="任务清单"
+            android:theme="@style/AppTheme.fade">
+            <intent-filter>
+                <action android:name="android.intent.action.DATABASE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".OrderHistoryDetailActivity"
             android:label="任务清单"
             android:theme="@style/AppTheme.fade">
             <intent-filter>
